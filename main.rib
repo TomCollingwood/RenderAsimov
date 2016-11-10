@@ -1,0 +1,148 @@
+#pointlight.rib
+Display "pointlight.tiff" "framebuffer" "rgb"
+Format 900 900 1.0
+Exposure 1.2 2.2
+Quantize "rgba" 255 0 255 0
+
+PixelVariance 0.1
+ 
+
+Hider "raytrace" "int incremental" [1]
+Integrator "PxrDefault" "integrator"
+#Integrator "PxrDirectLighting" "integrator"
+#Integrator "PxrPathTracer" "integrator"
+#Integrator "PxrVCM" "integrator"
+ 
+Projection "perspective" "fov" [30]
+ 
+Translate 0 0 5
+ 
+WorldBegin
+  AttributeBegin
+    AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [4]
+    Translate -2 2 -2
+    Sphere 0.1 -0.1 0.1 360 
+  AttributeEnd
+
+  Bxdf "PxrDisney" "forTheCover" "color baseColor" [1 0.1 0.1]
+
+	Translate -1.9 0 3
+	Rotate -30 1 0 0
+	Rotate 30 0 1 0
+	Rotate -2 0 0 1
+
+	Patch "bilinear" "P" [
+		0.14 	0 		0
+		3		0			0
+		0.14 	0 		3
+		3		0			3
+	]
+	Patch "bicubic" "P" [ 	
+		0 	0 		0
+		0.05 -0.02 0 
+		0.1	-0.05	0
+		0.14	0			0
+
+		0 	0 	1
+		0.05 -0.02 1 
+		0.1	-0.05	1
+		0.14	0			1
+
+		0		0		2
+		0.05 -0.02 2 
+		0.1	-0.05	2
+		0.14	0			2
+
+		0		0		3
+		0.05 -0.02 3 
+		0.1	-0.05	3
+		0.14	0		3
+	]
+
+#SPINE
+	Patch "bicubic" "P" [ 
+		0 -0.5  	0		
+		-0.1 -0.4	0	
+		-0.1 -0.1 	0	
+		0 0 	0	
+
+		0 -0.5  	0.5		
+		-0.1 -0.4	0.5		
+		-0.1 -0.1 	0.5		
+		0 -0 	0.5		
+
+		0 -0.5  	2.5		
+		-0.1 -0.4	2.5	
+		-0.1 -0.1 	2.5
+		0 0 	2.5	
+
+		0 -0.5  	3		
+		-0.1 -0.4	3	
+		-0.1 -0.1 	3	
+		0 -0 	3	
+	]
+
+	TransformBegin
+	Translate 0 -0.5 0
+	Scale 1 -1 1
+
+		Patch "bilinear" "P" [
+		0.14 	0 		0
+		3		0			0
+		0.14 	0 		3
+		3		0			3
+	]
+
+		Patch "bicubic" "P" [ 	
+		0 	0 		0
+		0.05 -0.02 0 
+		0.1	-0.05	0
+		0.14	0			0
+
+		0 	0 	1
+		0.05 -0.02 1 
+		0.1	-0.05	1
+		0.14	0			1
+
+		0		0		2
+		0.05 -0.02 2 
+		0.1	-0.05	2
+		0.14	0			2
+
+		0		0		3
+		0.05 -0.02 3 
+		0.1	-0.05	3
+		0.14	0		3
+	]
+	TransformEnd
+Bxdf "PxrDisney" "forThePaper" "color baseColor" [0.9 0.9 0.8]
+
+#paper close
+#make it curved with bicubicccc
+Patch "bilinear" "P" [
+	0.14	0			0.1
+	2.9		0			0.1
+	0.14	-0.5	0.1
+	2.9		-0.5	0.1
+]
+
+
+#paper far
+Patch "bilinear" "P" [
+	0.14	0			2.9
+	2.9		0			2.9
+	0.14	-0.5	2.9
+	2.9		-0.5	2.9
+]
+
+
+#paper middle
+Patch "bilinear" "P" [
+	2.9			0				0.1
+	2.9			0				2.9
+	2.9			-0.5		0.1
+	2.9			-0.5		2.9
+]
+
+
+WorldEnd
