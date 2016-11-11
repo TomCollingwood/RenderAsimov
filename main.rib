@@ -1,6 +1,6 @@
 #pointlight.rib
 Display "pointlight.tiff" "framebuffer" "rgb"
-Format 900 900 1.0
+Format 1000 500 1.0
 Exposure 1.2 2.2
 Quantize "rgba" 255 0 255 0
 
@@ -8,10 +8,10 @@ PixelVariance 0.1
  
 
 Hider "raytrace" "int incremental" [1]
-#Integrator "PxrDefault" "integrator"
+Integrator "PxrDefault" "integrator"
 #Integrator "PxrDirectLighting" "integrator"
 #Integrator "PxrPathTracer" "integrator"
-Integrator "PxrVCM" "integrator"
+#Integrator "PxrVCM" "integrator"
  
 Projection "perspective" "fov" [30]
  
@@ -19,51 +19,109 @@ Translate 0 0 5
  
 WorldBegin
   AttributeBegin
-    AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [4]
+    AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [2]
     Translate -2 2 -2
     Sphere 0.1 -0.1 0.1 360 
   AttributeEnd
 
-  Bxdf "PxrDisney" "forTheCover" "color baseColor" [1 0.1 0.1]
+  Bxdf "PxrDisney" "forTheCover" "color baseColor" [1 0 0]
 
-	Translate 0 0 3
-	Rotate 10 1 0 0
-	Rotate 30 0 1 0
-	Rotate -30 0 0 1
+	Translate -3 -0.5 -3 #right up towardsme
+	Rotate -20 1 0 0
+	Rotate -10 0 1 0
+	Rotate 10 0 0 1
 
+
+	PatchMesh "bicubic" 10 "nonperiodic" 4 "nonperiodic" "P"
+	[
 	#---------TOP COVER--------
-	Patch "bilinear" "P" [
-		0.14 	0 		0
-		3		0			0
-		0.14 	0 		3
-		3		0			3
-	]
+	#Patch "bicubic" "P" [
 
-	Patch "bicubic" "P" [ 	
 		0 	0 		0
-		0.05 -0.02 0 
+		0.05 -0.02 	0 
 		0.1	-0.05	0
-		0.14	0			0
+		0.14	0	0
 
-		0 	0 	1
-		0.05 -0.02 1 
+		#0.14 	0 		0 #1
+		0.5		0		0
+		2		0		0
+		3		0		0 #2
+		
+		3.05		-0.02		0 #2
+		3.1			-0.05			0 #2
+		3.05		-0.08			0 #2
+		#3		-0.1		0 #2
+
+
+
+
+		0 	0 		1
+		0.05 -0.02 	1 
 		0.1	-0.05	1
-		0.14	0			1
+		0.14	0	1
 
-		0		0		2
-		0.05 -0.02 2 
+		#0.14 	0 		1 #1
+		0.5		0		1
+		2		0		1
+		3		0		1 #2
+
+		3.05		-0.02		1 #2
+		3.1		-0.05			1 #2
+		3.05		-0.08			1 #2
+
+
+
+
+	0		0	2
+		0.05 -0.02 	2 
 		0.1	-0.05	2
-		0.14	0			2
+		0.14	0	2
 
-		0		0		3
-		0.05 -0.02 3 
+		#0.14 	0 		2
+		0.5		0		2
+		2		0		2
+		3		0		2 #2
+
+		3.05		-0.02		2 #2
+		3.1		-0.05			2 #2
+		3.05		-0.08			2 #2
+
+
+	
+		0		0	3
+		0.05 -0.02 	3 
 		0.1	-0.05	3
-		0.14	0		3
+		#0.14	0	3
+
+		0.14 	0 		3 #3
+		0.5		0		3
+		2		0		3
+		3		0		3 #4
+
+		3.05		-0.02		3 #2
+		3.1		-0.05			3 #2
+		3.05		-0.08			3 #2
+		
+
+
+
+
+
+	#]
+
+	#---------TOP DETAIL-------
+	#Patch "bicubic" "P" 
+	#[ 	
+
+
+
+
+
 	]
 
 #SPINE
 	Patch "bicubic" "P" [ 
-		0 -0.5  	0		
+		0 	-0.5  	0		
 		-0.1 -0.4	0	
 		-0.1 -0.1 	0	
 		0 0 	0	
@@ -81,7 +139,7 @@ WorldBegin
 		0 -0.5  	3		
 		-0.1 -0.4	3	
 		-0.1 -0.1 	3	
-		0 -0 	3	
+		0 	0 		3	
 	]
 
 	TransformBegin
