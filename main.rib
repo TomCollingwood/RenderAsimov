@@ -8,10 +8,10 @@ PixelVariance 0.1
  
 
 Hider "raytrace" "int incremental" [1]
-Integrator "PxrDefault" "integrator"
+#Integrator "PxrDefault" "integrator"
 #Integrator "PxrDirectLighting" "integrator"
 #Integrator "PxrPathTracer" "integrator"
-#Integrator "PxrVCM" "integrator"
+Integrator "PxrVCM" "integrator"
  
 Projection "perspective" "fov" [30]
  
@@ -27,17 +27,18 @@ WorldBegin
   Bxdf "PxrDisney" "forTheCover" "color baseColor" [1 0.1 0.1]
 
 	Translate 0 0 3
-	Rotate -2 1 0 0
-	Rotate 0 0 1 0
-	Rotate 0 0 0 1
+	Rotate 10 1 0 0
+	Rotate 30 0 1 0
+	Rotate -30 0 0 1
 
-
+	#---------TOP COVER--------
 	Patch "bilinear" "P" [
 		0.14 	0 		0
 		3		0			0
 		0.14 	0 		3
 		3		0			3
 	]
+
 	Patch "bicubic" "P" [ 	
 		0 	0 		0
 		0.05 -0.02 0 
