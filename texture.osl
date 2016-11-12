@@ -1,0 +1,35 @@
+shader tex(
+        float s = 0 [[int lockgeom = 0]],
+        float t = 0 [[int lockgeom = 0]],
+        color Cin=1, 
+        output color Cout=1)
+{
+    float newu = u;
+    float newv = v;
+
+    //if(newu>0.6)
+    //{
+    //    newu=1;
+    //}
+
+    if(newu<0.6)
+    {
+        newu = 1;
+    }
+    else
+    {
+        newu = 0.6*5 + (newu-0.6)*10;
+    }
+
+    newu=mod(newu,1.0);
+
+
+
+
+    newv=mod(newv,1.0);
+    
+    Cout=(color)texture("squares.tx",newu, newv, "wrap", "clamp");
+
+
+
+}
