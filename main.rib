@@ -1,17 +1,17 @@
 #pointlight.rib
 Display "pointlight.tiff" "framebuffer" "rgb"
 Format 1920 1080 1.0
-Exposure 1.2 2.2
+#Exposure 1.2 2.2
 Quantize "rgba" 255 0 255 0
 
 PixelVariance 0.0000001
  
 
 Hider "raytrace" "int incremental" [1]
-Integrator "PxrDefault" "integrator"
+#Integrator "PxrDefault" "integrator"
 #Integrator "PxrDirectLighting" "integrator"
 #Integrator "PxrPathTracer" "integrator"
-#Integrator "PxrVCM" "integrator"
+Integrator "PxrVCM" "integrator"
  
 Projection "perspective" "fov" [30]
  
@@ -23,6 +23,12 @@ WorldBegin
     Translate -2 2 -2
     Sphere 0.1 -0.1 0.1 360 
   AttributeEnd
+
+LightSource "ambientlight" 1 "intensity" 3
+
+
+
+  LightSource "ambientlight" 1 "intensity" 0.6
 
   Bxdf "PxrDisney" "forTheCover" "color baseColor" [1 0 0]
 
@@ -40,13 +46,25 @@ WorldBegin
 	Rotate -10 0 1 0
 	Rotate 10 0 0 1
 
+	Bxdf "PxrDisney" "forTheBody" "color baseColor" [0.8 0.8 0.8]
+	Patch "bilinear" "P" [
+	10	-0.5	10
+	-10	-0.5	10
+	10	-0.5	-10
+	-10	-0.5	-10
+	
+]
+
 
 	#Basis "b-spline" 1 "bezier" 1
 	#Basis [-.5 1.5 -1.5 .5 4 -8 4 0 -1.5 1.5 0 0 1 0 0 0] 3 [-.5 1.5 -1.5 .5 4 -8 4 0 -1.5 1.5 0 0 1 0 0 0] 3
 	Basis "b-spline" 1 [-1 3 -3 1 3 -6 3 0 -3 3 0 0 1 0 0 0] 1
 
 	Pattern "PxrOSL" "texture" "string shader" "tex" "color Cin" [1 0 0]
-    Bxdf "PxrDisney" "forTheBody" "reference color baseColor" ["texture:Cout"]
+    #Bxdf "PxrDisney" "forTheBody" "reference color baseColor" ["texture:Cout"]
+	Bxdf "PxrDisney" "forTheBody" "color baseColor" [0.608 0.078 0.102]
+
+
 
 	PatchMesh "bicubic" 34 "nonperiodic" 4 "nonperiodic" "P"
 	[
@@ -322,9 +340,12 @@ WorldBegin
 #	]
 #	TransformEnd
 Bxdf "PxrDisney" "forThePaper" "color baseColor" [0.9 0.9 0.8]
+#Bxdf "PxrLMDiffuse" "diffuseOnlyMaterial" "color frontColor" [0.84706 0.82745 0.81569] "color backColor" [0.84706 0.82745 0.81569]
 
 #paper close
 #make it curved with bicubicccc
+
+Rotate -10 1 0 0
 Patch "bilinear" "P" [
 	0.14	0			0.1
 	2.9		0			0.1
