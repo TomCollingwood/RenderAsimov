@@ -1,6 +1,6 @@
 #pointlight.rib
 Display "pointlight.tiff" "framebuffer" "rgb"
-Format 1920 1080 1.0
+Format 500 500 1.0
 #Exposure 1.2 2.2
 Quantize "rgba" 255 0 255 0
 
@@ -19,49 +19,80 @@ Translate 0 0 5
  
 WorldBegin
   AttributeBegin
-    AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [8]
+    AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [10]
     Translate -2 2 -2
     Sphere 0.1 -0.1 0.1 360 
   AttributeEnd
 
 LightSource "ambientlight" 1 "intensity" 3
 
+AttributeBegin
+    AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [8]
+    Translate -2 2 -10
+    Sphere 0.1 -0.1 0.1 360 
+  AttributeEnd
 
 
+	#-----------------LIGHTS--------------------------------------------
   LightSource "ambientlight" 1 "intensity" 0.6
-
-  Bxdf "PxrDisney" "forTheCover" "color baseColor" [1 0 0]
-
 	AttributeBegin
 		Rotate -90 1 0 0 
 		CoordinateSystem "downwards"
 		#Rotate -90 1 0 0 
 	AttributeEnd
 
-	Translate -1 -0.9 0 #right up towardsme
-
-	#Rotate -90 1 0 0 
-
+	Translate -1 -0.9 0
 	Rotate -30 1 0 0
-	Rotate -10 0 1 0
-	Rotate 10 0 0 1
+	Rotate 30 0 1 0
+	Rotate 0 0 0 1
+	#--------------------TABLE-------------------------------------------
+	Bxdf "PxrDisney" "forTheBody" "color baseColor" [0.8 0.8 0.8] "color emitColor" [0.1 0.1 0.1]
+	Patch "bilinear" "P" 
+	[
+	10	-2.1	10
+	-10	-2.1	10
+	10	-2.1	-10
+	-10	-2.1	-10
+	]
+	Patch "bilinear" "P" 
+	[
+	10	-2.1	10
+	-10	-2.1	10
+	10	10	10
+	-10	10	10
+	]
+	Patch "bilinear" "P" 
+	[
+	10	-2.1	10
+	10	-2.1	-10
+	10	10		10
+	10	10		-10
+	]
+	Patch "bilinear" "P" 
+	[
+		-10	-2.1	-10
+		10	-2.1	-10
+		-10	10	-10
+		10	10	-10
+	]
+	Patch "bilinear" "P" 
+	[
+		-10	-2.1	-10
+		-10	-2.1	10
+		-10	10	-10
+		-10	10	10
+	]
 
-	Bxdf "PxrDisney" "forTheBody" "color baseColor" [0.8 0.8 0.8]
-	Patch "bilinear" "P" [
-	10	-0.5	10
-	-10	-0.5	10
-	10	-0.5	-10
-	-10	-0.5	-10
-	
-]
 
+
+	Rotate 90 1 0 0
+	Rotate 90 0 0 1
+	Translate 1.5 1 -1
 
 	#Basis "b-spline" 1 "bezier" 1
-	#Basis [-.5 1.5 -1.5 .5 4 -8 4 0 -1.5 1.5 0 0 1 0 0 0] 3 [-.5 1.5 -1.5 .5 4 -8 4 0 -1.5 1.5 0 0 1 0 0 0] 3
 	Basis "b-spline" 1 [-1 3 -3 1 3 -6 3 0 -3 3 0 0 1 0 0 0] 1
 
-	Pattern "PxrOSL" "texture" "string shader" "tex" "color Cin" [1 0 0]
-    #Bxdf "PxrDisney" "forTheBody" "reference color baseColor" ["texture:Cout"]
+	#Bxdf "PxrDisney" "forTheBody" "reference color baseColor" ["texture:Cout"]
 	Bxdf "PxrDisney" "forTheBody" "color baseColor" [0.608 0.078 0.102]
 
 
@@ -306,9 +337,9 @@ LightSource "ambientlight" 1 "intensity" 3
 	# 	0 	0 		3	
 	# ]
 
-	TransformBegin
-	Translate 0 -0.5 0
-	Scale 1 -1 1
+	#TransformBegin
+	#Translate 0 -0.5 0
+	#Scale 1 -1 1
 
 	#	Patch "bilinear" "P" [
 #		0.14 	0 		0
@@ -345,7 +376,7 @@ Bxdf "PxrDisney" "forThePaper" "color baseColor" [0.9 0.9 0.8]
 #paper close
 #make it curved with bicubicccc
 
-Rotate -10 1 0 0
+#Rotate -10 1 0 0
 Patch "bilinear" "P" [
 	0.14	0			0.1
 	2.9		0			0.1
@@ -370,6 +401,7 @@ Patch "bilinear" "P" [
 	2.9			-0.5		0.1
 	2.9			-0.5		2.9
 ]
+#TransformEnd
 
 
 WorldEnd
