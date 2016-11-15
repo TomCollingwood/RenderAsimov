@@ -7,29 +7,28 @@ shader tex(
     float newu = u;
     float newv = v;
 
-    //if(newu>0.6)
-    //{
-    //    newu=1;
-    //}
+    float mult=3;
+ 
 
-    if(newu<0.6)
+    point PP=transform("object",P); 
+   
+    
+    if(PP[0]<0)
     {
-        newu = 1;
+         Cout=(color)texture("squares.tx",PP[2]*mult, PP[1]*mult, "wrap", "periodic");
     }
     else
     {
-        newu = 0.6*5 + (newu-0.6)*10;
+        Cout=(color)texture("squares.tx",PP[0]*mult, PP[2]*mult, "wrap", "periodic");
     }
-
-    newu=mod(newu,1.0);
-
-
-
-
-    newv=mod(newv,1.0);
     
-    Cout=(color)texture("squares.tx",newu, newv, "wrap", "clamp");
 
+    //newu=mod(newu,1.0);
+    //newv=mod(newv,1.0);
+    
+    
+    //PP[2]=0;
+    //Cout=(color) noise("cell",PP);
 
 
 }
