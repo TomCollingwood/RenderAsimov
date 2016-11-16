@@ -6,7 +6,7 @@ Quantize "rgba" 255 0 255 0
 
 PixelVariance 0.0000001
  
-
+#---------------------INTEGRATOR--------------------------------------
 Hider "raytrace" "int incremental" [1]
 #Integrator "PxrDefault" "integrator"
 #Integrator "PxrDirectLighting" "integrator"
@@ -18,35 +18,27 @@ Projection "perspective" "fov" [30]
 Translate 0 0 5
  
 WorldBegin
-  AttributeBegin
-    AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [10]
-    Translate -2 2 -2
-    Sphere 0.1 -0.1 0.1 360 
-  AttributeEnd
-
-LightSource "ambientlight" 1 "intensity" 3
-
-AttributeBegin
-    AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [8]
-    Translate -2 2 -10
-    Sphere 0.1 -0.1 0.1 360 
-  AttributeEnd
-
-
 	#-----------------LIGHTS--------------------------------------------
-  LightSource "ambientlight" 1 "intensity" 0.6
 	AttributeBegin
-		Rotate -90 1 0 0 
-		CoordinateSystem "downwards"
-		#Rotate -90 1 0 0 
-	AttributeEnd
+    	AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [10]
+    	Translate -2 2 -2
+    	Sphere 0.1 -0.1 0.1 360 
+  	AttributeEnd
 
+	LightSource "ambientlight" 1 "intensity" 3
+
+	AttributeBegin
+    	AreaLightSource "PxrStdAreaLight" "theLight2" "float exposure" [8]
+    	Translate -2 2 -10
+    	Sphere 0.1 -0.1 0.1 360 
+  	AttributeEnd
+	#------------------POSITIONING------------------------------------------------
 	Translate -1 -0.9 0
 	Rotate -30 1 0 0
 	Rotate 30 0 1 0
 	Rotate 0 0 0 1
-	#--------------------TABLE-------------------------------------------
-	Bxdf "PxrDisney" "forTheBody" "color baseColor" [0.8 0.8 0.8] "color emitColor" [0.1 0.1 0.1]
+	#--------------------TABLE&ROOM-------------------------------------------
+	Bxdf "PxrDisney" "forTheBody" "color baseColor" [0.8 0.8 0.8] "color emitColor" [0.04 0.04 0.04]
 	Patch "bilinear" "P" 
 	[
 	10	-2.1	10
@@ -83,8 +75,7 @@ AttributeBegin
 		-10	10	10
 	]
 
-
-
+	#-------------------BOOK POSITIONING-------------------------------------
 	Rotate 90 1 0 0
 	Rotate 90 0 0 1
 	Translate 1.5 1 -1
@@ -94,8 +85,6 @@ AttributeBegin
 
 	#Bxdf "PxrDisney" "forTheBody" "reference color baseColor" ["texture:Cout"]
 	Bxdf "PxrDisney" "forTheBody" "color baseColor" [0.608 0.078 0.102]
-
-
 
 	PatchMesh "bicubic" 34 "nonperiodic" 4 "nonperiodic" "P"
 	[
@@ -219,7 +208,7 @@ AttributeBegin
 		3.02	-0.48		2 
 		3.01	-0.49		2 
 
-				#-----COVER2-----
+		#-----COVER2-----
 		3.0		-0.5		2
 		2.9		-0.5		2
 		2.8		-0.5		2 
@@ -377,18 +366,62 @@ Bxdf "PxrDisney" "forThePaper" "color baseColor" [0.9 0.9 0.8]
 #make it curved with bicubicccc
 
 #Rotate -10 1 0 0
-Patch "bilinear" "P" [
-	0.14	0			0.1
-	2.9		0			0.1
+
+#Basis 
+
+PatchMesh "bicubic" 7 "nonperiodic" 4 "nonperiodic" "P" [
+	0		0		0.1
+	0.05	-0.02	0.1
+	0.1		-0.05	0.1
+	0.14	0		0.1
+
+	0.5		0		0.1
+	0.6		0		0.1
+	0.7		0		0.1
+
+	0		-0.2	0.1
+	0.05	-0.22	0.1
+	0.1		-0.25	0.1
+	0.14	-0.2	0.1
+
+	0.5		-0.2	0.1
+	0.6		-0.2	0.1
+	0.7		-0.2	0.1
+	
+	0		-0.3	0.1
+	0.05	-0.28	0.1
+	0.1		-0.25	0.1
+	0.14	-0.3	0.1
+
+	0.5		-0.3	0.1
+	0.6		-0.3	0.1
+	0.7		-0.3	0.1
+
+	0		-0.5	0.1
+	0.05	-0.48	0.1
+	0.1		-0.45	0.1
 	0.14	-0.5	0.1
-	2.9		-0.5	0.1
+
+	0.5		-0.5	0.1
+	0.6		-0.5	0.1
+	0.7		-0.5	0.1
 ]
 
+ Patch "bilinear" "P" [
+ 	0.6	0			0.1
+ 	2.9		0			0.1
+ 	0.6		-0.5	0.1
+ 	2.9		-0.5	0.1
+ ]
+Bxdf "PxrDisney" "forThePaper" "color baseColor" [1 0 0]
 
 #paper far
+
+
+
 Patch "bilinear" "P" [
-	0.14	0			2.9
-	2.9		0			2.9
+	0.14	0		2.9
+	2.9		0		2.9
 	0.14	-0.5	2.9
 	2.9		-0.5	2.9
 ]

@@ -4,7 +4,7 @@ shader tex(
         color Cin=1, 
         output color Cout=1)
 {
-    float newu = u;
+    float newu = u; 
     float newv = v;
 
     float mult=3;
