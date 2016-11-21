@@ -15,4 +15,20 @@ then
     touch book.c
     touch book.rib
 fi
-prman -d it main.rib
+
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   platform='apple'
+fi
+
+if [[ $platform == 'linux' ]]; then
+   render main.rib
+elif [[ $platform == 'apple' ]]; then
+   prman -d it main.rib
+fi
+
+
+
