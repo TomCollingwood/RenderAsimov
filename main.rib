@@ -16,7 +16,7 @@ Integrator "PxrVCM" "integrator"
 Projection "perspective" "fov" [30]
  
 Translate 0 0 5
-Scale 2 2 2
+#Scale 2 2 2
  
 WorldBegin
 	#-----------------LIGHTS--------------------------------------------
@@ -34,7 +34,7 @@ WorldBegin
   #   	Sphere 0.1 -0.1 0.1 360 
   # 	AttributeEnd
 
-		AttributeBegin
+	AttributeBegin
 	AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [1]
 			"float enableEmissionMap" [1]
 			"string rman__EmissionMap" ["myenv.tx"]
@@ -113,6 +113,21 @@ AttributeEnd
 
 	ReadArchive "book.rib"
 	AttributeEnd
+  
+
+
+  	AttributeBegin
+	Attribute "trace" "displacements" [ 1 ]
+	Attribute "displacementbound" "sphere" [30] "coordinatesystem" ["shader"]
+	Pattern "PxrOSL" "diskTxpaper" "string shader" [ "randomDiskpaper"]
+	Displacement "doDisplace" "reference float disp" [ "diskTxpaper:resultF" ] "float atten" [0.05]
+	#Bxdf "PxrDisney" "forTheBody" "color baseColor" [0.608 0.078 0.102]
+
+		Bxdf "PxrLMDiffuse" "diffuseOnlyMaterial" "color frontColor" [ 0.84706 0.82745 0.61569 ] "color backColor" [ 0.84706 0.82745 0.61569 ]
+
+  ReadArchive "cover.rib"
+
+  AttributeEnd
 
 	#Bxdf "PxrDisney" "forThePaper" "color baseColor" [0.9 0.9 0.8]
 	#Bxdf "PxrLMDiffuse" "diffuseOnlyMaterial" "color frontColor" [0.84706 0.82745 0.81569] "color backColor" [0.84706 0.82745 0.81569]

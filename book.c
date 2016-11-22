@@ -5,7 +5,7 @@
 int main(int argc, char *argv[])
 {
 	// PARAMETERS
-	float length = 3;
+	float length = 3; 
 	float thickness = 0.5;
 	float spinecurve = 0.1;
 	float ridgedepth = 0.03;
@@ -284,14 +284,14 @@ RtPoint botflat[4]=
 	{0.14,		-thickness,	2.9},
 	{length-0.1,-thickness,	2.9}
 };
-
+ 
 
 RtPoint midflat[4]=
 {
-	{length-0.1,	0,			0.1},
+	{length-0.1,	0,			0.1}, 
 	{length-0.1,	0,			2.9},
 	{length-0.1,	-thickness, 0.1},
-	{length-0.1,	-thickness, 2.9}
+	{length-0.1,	-thickness, 2.9} 
 };
 	
 	RiBegin(RI_NULL);		
@@ -300,11 +300,13 @@ RtPoint midflat[4]=
 
 		RiBxdf("PxrLMDiffuse","diffuseOnlyMaterial","color frontColor",pagecolor,"color backColor",pagecolor,RI_NULL);
 
-		RiPatchMesh("bicubic",7,"nonperiodic",4,"nonperiodic","P",toppages,RI_NULL); 
+		// RiPatchMesh("bicubic",7,"nonperiodic",4,"nonperiodic","P",toppages,RI_NULL); 
 
-		RiPatch("bilinear","P",topflat,RI_NULL);
-		RiPatch("bilinear","P",botflat,RI_NULL);
-		RiPatch("bilinear","P",midflat,RI_NULL);
+		// RiPatch("bilinear","P",topflat,RI_NULL);
+		// RiPatch("bilinear","P",botflat,RI_NULL);
+		// RiPatch("bilinear","P",midflat,RI_NULL);
+
+
 		
 	RiEnd();
 	return 0;

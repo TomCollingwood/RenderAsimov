@@ -32,7 +32,7 @@ shader tex(
     
     //PP[2]=0;
     float noisecol = noise("perlin",PP);
-    Cout=bookcol-color(noisecol,noisecol,noisecol)/7.;
+    Cout=bookcol-color(noisecol,noisecol,noisecol)/10.;
 
 
 }
