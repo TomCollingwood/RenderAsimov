@@ -1,7 +1,7 @@
 #!/bin/bash
 #A script that compiles all needed to render book
 
-cd ~/Documents/RenderAsimov/
+cd ~/Documents/GitHubStuff/RenderAsimov/
 
 if test texture.osl -nt tex.oso
 then
