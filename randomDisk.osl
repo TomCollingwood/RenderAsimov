@@ -2,19 +2,36 @@ shader randomDisk (
 output	float resultF=0
 )
 {
-    float fuzz=0.05;
-    float repeatCount=5;
-    float s=mod(repeatCount*u,1);
-    float t=mod(repeatCount*v,1);
-    point centre=point (0.5,0.5,0);
-    point here=point (s,t,0);
-    float dist=distance(centre,here);
+    float mult=3;
+    point PP=transform("object",P); 
+    float disp=0;
+    float fuzz=0.1;
 
-    float radius=(float) noise("cell",repeatCount*u,repeatCount*v)*0.4;
+    if(PP[0]<0)
+    {
+        //Cout=(color)texture("squares.tx",PP[2]*mult, PP[1]*mult, "wrap", "periodic");
 
-    float longs=(float) noise("cell",0.01,repeatCount*v)*0.4;
+        //if(fmod(PP[2],0.003)<0.001) disp+=0.1;
+        disp+=fmod(PP[2],0.03);
 
-    float inDisk=1-smoothstep(longs-fuzz,0,dist);
-    resultF=inDisk;
+        //if(fmod(PP[1],0.003)<0.001) disp+=0.1;
+        disp+=fmod(PP[1],0.03);
+        //disp=0.2;
+        //disp=noise("cell",PP[2]*10,PP[1]*10);
+    }
+    else
+    {
+        //Cout=(color)texture("squares.tx",PP[0]*mult, PP[2]*mult, "wrap", "periodic");
+        //if(fmod(PP[0],0.003)<0.001) disp+=0.1;
+        disp+=fmod(PP[0],0.03)*10;
+
+        //if(fmod(PP[2],0.003)<0.001) disp+=0.1;
+        disp+=fmod(PP[2],0.03)*10;
+        //disp=noise("cell",0,PP[2]*10);
+    }
+
+   
+    resultF=-disp;
+    //resultF=0;
 }
 

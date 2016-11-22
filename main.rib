@@ -1,6 +1,6 @@
 #pointlight.rib
 Display "pointlight.tiff" "framebuffer" "rgb"
-Format 500 500 1.0
+Format 1000 1000 1.0
 #Exposure 1.2 2.2
 Quantize "rgba" 255 0 255 0
 
@@ -16,22 +16,34 @@ Integrator "PxrVCM" "integrator"
 Projection "perspective" "fov" [30]
  
 Translate 0 0 5
+Scale 2 2 2
  
 WorldBegin
 	#-----------------LIGHTS--------------------------------------------
-	AttributeBegin
-    	AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [10]
-    	Translate -2 2 -2
-    	Sphere 0.1 -0.1 0.1 360 
-  	AttributeEnd
+	# AttributeBegin
+  #   	AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [10]
+  #   	Translate -2 2 -2
+  #   	Sphere 0.1 -0.1 0.1 360 
+  # 	AttributeEnd
 
-	LightSource "ambientlight" 1 "intensity" 3
+	#  LightSource "ambientlight" 1 "intensity" 3
 
-	AttributeBegin
-    	AreaLightSource "PxrStdAreaLight" "theLight2" "float exposure" [8]
-    	Translate -2 2 -10
-    	Sphere 0.1 -0.1 0.1 360 
-  	AttributeEnd
+	# AttributeBegin
+  #   	AreaLightSource "PxrStdAreaLight" "theLight2" "float exposure" [8]
+  #   	Translate -2 2 -10
+  #   	Sphere 0.1 -0.1 0.1 360 
+  # 	AttributeEnd
+
+		AttributeBegin
+	AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [1]
+			"float enableEmissionMap" [1]
+			"string rman__EmissionMap" ["myenv.tx"]
+			"float linearizeEmissionMap" [1]
+	Rotate -90 1 0 0 
+	Geometry "envsphere" "constant float radius" [100]
+AttributeEnd
+
+
 	#------------------POSITIONING------------------------------------------------
 	Translate -1 -0.9 0
 	Rotate -30 1 0 0
@@ -40,45 +52,45 @@ WorldBegin
 	#--------------------TABLE&ROOM-------------------------------------------
 
 
-	Bxdf "PxrDisney" "forTheBody" "color baseColor" [0.8 0.8 0.8] "color emitColor" [0.04 0.04 0.04]
+	# Bxdf "PxrDisney" "forTheBody" "color baseColor" [0.8 0.8 0.8] "color emitColor" [0.04 0.04 0.04]
 
-	Sphere 20 -20 20 360 
+	# Sphere 20 -20 20 360 
 
-	Patch "bilinear" "P" 
-	[
-	10	-2.1	10
-	-10	-2.1	10
-	10	-2.1	-10
-	-10	-2.1	-10
-	]
-	Patch "bilinear" "P" 
-	[
-	10	-2.1	10
-	-10	-2.1	10
-	10	10	10
-	-10	10	10
-	]
-	Patch "bilinear" "P" 
-	[
-	10	-2.1	10
-	10	-2.1	-10
-	10	10		10
-	10	10		-10
-	]
-	Patch "bilinear" "P" 
-	[
-		-10	-2.1	-10
-		10	-2.1	-10
-		-10	10	-10
-		10	10	-10
-	]
-	Patch "bilinear" "P" 
-	[
-		-10	-2.1	-10
-		-10	-2.1	10
-		-10	10	-10
-		-10	10	10
-	]
+	# Patch "bilinear" "P" 
+	# [
+	# 10	-2.1	10
+	# -10	-2.1	10
+	# 10	-2.1	-10
+	# -10	-2.1	-10
+	# ]
+	# Patch "bilinear" "P" 
+	# [
+	# 10	-2.1	10
+	# -10	-2.1	10
+	# 10	10	10
+	# -10	10	10
+	# ]
+	# Patch "bilinear" "P" 
+	# [
+	# 10	-2.1	10
+	# 10	-2.1	-10
+	# 10	10		10
+	# 10	10		-10
+	# ]
+	# Patch "bilinear" "P" 
+	# [
+	# 	-10	-2.1	-10
+	# 	10	-2.1	-10
+	# 	-10	10	-10
+	# 	10	10	-10
+	# ]
+	# Patch "bilinear" "P" 
+	# [
+	# 	-10	-2.1	-10
+	# 	-10	-2.1	10
+	# 	-10	10	-10
+	# 	-10	10	10
+	# ]
 
 	#-------------------BOOK POSITIONING-------------------------------------
 	Rotate 90 1 0 0
@@ -94,7 +106,10 @@ WorldBegin
 	Attribute "displacementbound" "sphere" [30] "coordinatesystem" ["shader"]
 	Pattern "PxrOSL" "diskTx" "string shader" [ "randomDisk"]
 	Displacement "doDisplace" "reference float disp" [ "diskTx:resultF" ] "float atten" [0.05]
-	Bxdf "PxrDisney" "forTheBody" "color baseColor" [0.608 0.078 0.102]
+	#Bxdf "PxrDisney" "forTheBody" "color baseColor" [0.608 0.078 0.102]
+
+	Pattern "PxrOSL" "texture" "string shader" "tex" "color Cin" [1 0 0]
+  Bxdf "PxrDisney" "forTheBody" "reference color baseColor" ["texture:Cout"]
 
 	ReadArchive "book.rib"
 	AttributeEnd
