@@ -4,33 +4,26 @@ shader tex(
         color Cin=1, 
         output color Cout=1)
 {
-    float newu = u; 
-    float newv = v;
-
     float mult=3;
     float multtex=2;
  
-
     point PP=transform("object",P); 
    
-   color bookcol=color(0.608,0.078,0.102);
-    
-    if(PP[0]<0)
+    color bookcol=color(0.608,0.078,0.102);
+
+        
+
+    //SPINE
+    if(PP[0]<-0.05 && PP[2]>0.5 && PP[2]<1) 
     {
-         bookcol=(color)texture("squares.tx",PP[1]*multtex, PP[2]*multtex, "wrap", "periodic");
+        //bookcol=color(0.8,0.8,0.3);
+        bookcol=color(0.608,0.078,0.102);
     }
     else
     {
-         bookcol=(color)texture("squares.tx",PP[2]*multtex, PP[0]*multtex, "wrap", "periodic");
+        bookcol=color(0.608,0.078,0.102);
     }
-    
-    bookcol=color(0.608,0.078,0.102);
 
-    //newu=mod(newu,1.0);
-    //newv=mod(newv,1.0);
-    
-    
-    //PP[2]=0;
     float noisecol = noise("perlin",PP);
     Cout=bookcol-color(noisecol,noisecol,noisecol)/10.;
 

@@ -1,12 +1,17 @@
 #!/bin/bash
 cd ~/Documents/GitHubStuff/RenderAsimov/
 
-git add main.rib
-git add book.c
-git add randomDisk.osl
-git add doDisplace.sl
-git add Makefile
-git add scripts/ragain.sh
-git add scripts/gitaddasimov.sh
-git add texture.osl
-git add scripts/openrender.sh
+#C Files
+git add book.c pages.c label.c 
+#Shader Files
+git add doDisplace.sl randomDisk.osl randomDiskpaper.osl texture.osl
+#RIB file
+git add main.rib 
+#Make files (Makefile contains book parameters)
+git add Makefilebook Makefilelabel Makefilepages Makefile.sh
+#Scripts
+git add scripts/*
+#Readme
+git add README.md
+
+

@@ -3,17 +3,19 @@
 
 cd ~/Documents/GitHubStuff/RenderAsimov/
 
+./Makefile.sh
+
 if test texture.osl -nt tex.oso
 then
     oslc texture.osl
     touch texture.osl
     touch text
 fi
-if test book.c -nt book.rib
+if test randomDisk.osl -nt randomDisk.oso
 then
-    make
-    touch book.c
-    touch book.rib
+    oslc randomDisk.osl
+    touch randomDisk.osl
+    touch disk
 fi
 
 platform='unknown'
@@ -29,6 +31,3 @@ if [[ $platform == 'linux' ]]; then
 elif [[ $platform == 'apple' ]]; then
    prman -d it main.rib
 fi
-
-
-

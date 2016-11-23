@@ -6,29 +6,27 @@ output	float resultF=0
     point PP=transform("object",P); 
     float disp=0;
     float fuzz=0.1;
+    float sinm=500.;
+    float sind=100.;
 
+
+
+    point noisestuff=noise("perlin",PP*13);
+    noisestuff/=300;
+
+    //SPINE
     if(PP[0]<0)
     {
-        //Cout=(color)texture("squares.tx",PP[2]*mult, PP[1]*mult, "wrap", "periodic");
-
-        //if(fmod(PP[2],0.003)<0.001) disp+=0.1;
-        disp+=fmod(PP[2],0.03);
-
-        //if(fmod(PP[1],0.003)<0.001) disp+=0.1;
-        disp+=fmod(PP[1],0.03);
-        //disp=0.2;
-        //disp=noise("cell",PP[2]*10,PP[1]*10);
+        disp+=sin(sinm*(PP[2]+noisestuff[2]))/sind;
+        disp+=sin(sinm*(PP[1]+noisestuff[1]))/sind;
     }
     else
     {
-        //Cout=(color)texture("squares.tx",PP[0]*mult, PP[2]*mult, "wrap", "periodic");
-        //if(fmod(PP[0],0.003)<0.001) disp+=0.1;
-        disp+=fmod(PP[0],0.03)*10;
-
-        //if(fmod(PP[2],0.003)<0.001) disp+=0.1;
-        disp+=fmod(PP[2],0.03)*10;
-        //disp=noise("cell",0,PP[2]*10);
+        disp+=sin(sinm*(PP[0]+noisestuff[0]))/sind;
+        disp+=sin(sinm*(PP[2]+noisestuff[2]))/sind;
     }
+
+    
 
    
     resultF=-disp;
