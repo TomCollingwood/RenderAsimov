@@ -4,10 +4,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int main(int argc, char *argv[])
+int main(int argc, char *argv[]) 
 {
 	// PARAMETERS
-	float length = atof(argv[1]);
+	float length = atof(argv[1]); 
 	float thickness = atof(argv[2]);
 	float spinecurve = atof(argv[3]);
 	float ridgedepth =atof(argv[4]);

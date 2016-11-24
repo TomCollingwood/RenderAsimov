@@ -10,7 +10,6 @@ output	float resultF=0
     float sind=20.;
 
 
-
     point noisestuff=noise("perlin",PP*13);
     noisestuff/=300;
 
@@ -20,6 +19,7 @@ output	float resultF=0
     disp+=sin(sinm*(PP[1]+noisestuff[1]))/sind;
     disp+=perlinn/20.;
 
+    disp+=sin(100*(PP[1]+noisestuff[1]))/sind;
 
    
     resultF=-disp;

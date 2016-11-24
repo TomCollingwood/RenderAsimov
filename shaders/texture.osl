@@ -4,7 +4,6 @@ shader tex(
         color Cin=1, 
         output color Cout=1)
 {
-
     // How did you work these out, Tom?
     // Trial, error and an overheated laptop.
     float mult=1.24;
@@ -26,6 +25,4 @@ shader tex(
 
     float noisecol = noise("perlin",PP);
     Cout=bookcol-color(noisecol,noisecol,noisecol)/10.;
-
-
 }

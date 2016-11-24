@@ -5,7 +5,7 @@ cd ~/Documents/GitHubStuff/RenderAsimov/RISpec
 #parameters that all c files use
 declare length=3
 thickness=0.5
-spinecurve=0.1
+spinecurve=0.03
 ridgedepth=0.03
 height=3
 
