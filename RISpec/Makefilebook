@@ -5,8 +5,8 @@ DYLD_LIBRARY_PATH=${RMANTREE}/lib
 
 SCENE=book
 
-${SCENE}.rib : ${SCENE}.gen
-	LD_LIBRARY_PATH=${RMANTREE}/lib ./${SCENE}.gen $(length) $(thickness) $(spinecurve) $(ridgedepth) $(height) >${SCENE}.rib
+../RIB/${SCENE}.rib : ${SCENE}.gen
+	LD_LIBRARY_PATH=${RMANTREE}/lib ./${SCENE}.gen $(length) $(thickness) $(spinecurve) $(ridgedepth) $(height) >../RIB/${SCENE}.rib
 
 ${SCENE}.gen : ${SCENE}.c
 	cc ${CFLAGS} -o ${SCENE}.gen  ${SCENE}.c ${LIBS}
