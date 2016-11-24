@@ -4,20 +4,20 @@ shader tex(
         color Cin=1, 
         output color Cout=1)
 {
-    float mult=3;
-    float multtex=2;
+
+    // How did you work these out, Tom?
+    // Trial, error and an overheated laptop.
+    float mult=1.24;
+    float udispl=0.19; // LEFT <
+    float vdispl=0.38; // UP   ^
  
     point PP=transform("object",P); 
-   
     color bookcol=color(0.608,0.078,0.102);
 
-        
-
     //SPINE
-    if(PP[0]<-0.05 && PP[2]>0.5 && PP[2]<1) 
+    if(PP[0]<-0.02 && PP[2]>0.5 && PP[2]<1.3) 
     {
-        //bookcol=color(0.8,0.8,0.3);
-        bookcol=color(0.608,0.078,0.102);
+        bookcol=(color)texture("labelTexture.tx",-PP[1]*mult+udispl, PP[2]*mult+vdispl, "wrap", "periodic");
     }
     else
     {

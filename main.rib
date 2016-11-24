@@ -4,7 +4,9 @@ Format 1000 1000 1.0
 #Exposure 1.2 2.2
 Quantize "rgba" 255 0 255 0
 
-PixelVariance 0.0000001
+PixelVariance 0.00001
+#PixelVariance 10
+
  
 #---------------------INTEGRATOR--------------------------------------
 Hider "raytrace" "int incremental" [1]
@@ -16,7 +18,6 @@ Integrator "PxrVCM" "integrator"
 Projection "perspective" "fov" [30]
  
 Translate 0 0 5
-#Scale 2 2 2
  
 WorldBegin
 	#-----------------LIGHTS--------------------------------------------
@@ -45,10 +46,12 @@ AttributeEnd
 
 
 	#------------------POSITIONING------------------------------------------------
-	Translate -1 -0.9 0
 	Rotate -30 1 0 0
-	Rotate 0 0 1 0
+	Rotate 30 0 1 0
 	Rotate 0 0 0 1
+	Translate -1.7 -1.4 0
+	Scale 1.2 1.2 1.2
+	
 	#--------------------TABLE&ROOM-------------------------------------------
 
 
@@ -114,12 +117,12 @@ AttributeEnd
 	ReadArchive "book.rib"
 	AttributeEnd
   
-  Bxdf "PxrDisney" "forTheBody" "color baseColor" [0 0 0] "float metallic" [0.8]
+  	#Bxdf "PxrDisney" "forTheBody" "color baseColor" [0 0 0] "float metallic" [0.8]
 	#Basis "bezier" 1 "bezier" 1
-	ReadArchive "label.rib"
+	#ReadArchive "label.rib"
 	
 
-
+	#PAGES<--------------
   	AttributeBegin
 	Attribute "trace" "displacements" [ 1 ]
 	Attribute "displacementbound" "sphere" [30] "coordinatesystem" ["shader"]
@@ -129,9 +132,9 @@ AttributeEnd
 
 	Bxdf "PxrLMDiffuse" "diffuseOnlyMaterial" "color frontColor" [ 0.84706 0.82745 0.61569 ] "color backColor" [ 0.84706 0.82745 0.61569 ]
 
-  ReadArchive "cover.rib"
+  	ReadArchive "pages.rib"
 
-  AttributeEnd
+  	AttributeEnd
 
 	#Bxdf "PxrDisney" "forThePaper" "color baseColor" [0.9 0.9 0.8]
 	#Bxdf "PxrLMDiffuse" "diffuseOnlyMaterial" "color frontColor" [0.84706 0.82745 0.81569] "color backColor" [0.84706 0.82745 0.81569]

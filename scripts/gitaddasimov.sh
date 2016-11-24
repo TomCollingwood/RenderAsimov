@@ -11,6 +11,8 @@ git add main.rib
 git add Makefilebook Makefilelabel Makefilepages Makefile.sh
 #Scripts
 git add scripts/*
+#Textures
+git add labelTexture.tx labelTextureSquare.psd
 #Readme
 git add README.md
 
