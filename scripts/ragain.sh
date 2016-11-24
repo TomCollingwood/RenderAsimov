@@ -3,20 +3,29 @@
 
 cd ~/Documents/GitHubStuff/RenderAsimov/
 
-./Makefile.sh
+./RISpec/Makefile.sh
 
+cd shaders
 if test texture.osl -nt tex.oso
 then
-    oslc texture.osl
+    oslc texture.osl 
     touch texture.osl
-    touch text
+    touch tex.oso
 fi
 if test randomDisk.osl -nt randomDisk.oso
 then
     oslc randomDisk.osl
     touch randomDisk.osl
-    touch disk
+    touch randomDisk.oso
 fi
+
+if test randomDiskpaper.osl -nt randomDiskpaper.oso
+then
+    oslc randomDiskpaper.osl
+    touch randomDiskpaper.osl
+    touch randomDiskpaper.oso
+fi
+cd ..
 
 platform='unknown'
 unamestr=`uname`
@@ -27,7 +36,7 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
 fi
 
 if [[ $platform == 'linux' ]]; then
-   render main.rib
+   render RIB/main.rib
 elif [[ $platform == 'apple' ]]; then
-   prman -d it main.rib
+   prman -d it RIB/main.rib
 fi

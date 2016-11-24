@@ -11,19 +11,21 @@ fi
 
 if [[ $platform == 'linux' ]]; then
   cd ~/Documents/RenderAsimov/
-  /opt/code/bin/code -r main.rib
-  /opt/code/bin/code -r texture.osl
-  /opt/code/bin/code -r book.c
-  /opt/code/bin/code -r label.c
-  /opt/code/bin/code -r pages.c
+  /opt/code/bin/code -r RIB/main.rib
+  /opt/code/bin/code -r shaders/texture.osl
+  /opt/code/bin/code -r shaders/randomDisk.osl
+  /opt/code/bin/code -r RISpec/book.c
+  /opt/code/bin/code -r RISpec/label.c
+  /opt/code/bin/code -r RISpec/pages.c
 
 elif [[ $platform == 'apple' ]]; then
   cd ~/Documents/GitHubStuff/RenderAsimov/
-  open main.rib
-  open texture.osl
-  open book.c
-  open label.c
-  open pages.c
+  open RIB/main.rib
+  open shaders/texture.osl
+  open shaders/randomDisk.osl
+  open RISpec/book.c
+  open RISpec/label.c
+  open RISpec/pages.c
   open /Applications/Pixar/RenderManStudio-20.11-maya2015/bin/it.app
 fi
 
