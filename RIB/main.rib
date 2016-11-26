@@ -4,7 +4,7 @@ Format 1000 1000 1.0
 #Exposure 1.2 2.2
 Quantize "rgba" 255 0 255 0
 
-PixelVariance 0.00001
+PixelVariance 0.01
 #PixelVariance 10
  
 #°º¤ø,¸¸,ø¤º°`°º¤ø,¸INTEGRATORS,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸
@@ -34,16 +34,19 @@ WorldBegin
 				"string rman__EmissionMap" ["textures/myenv.tx"]
 				"float linearizeEmissionMap" [1]
 		Rotate -90 1 0 0 
-		Geometry "envsphere" "constant float radius" [100]
+		Geometry "envsphere" "constant float radius" [50]
 	AttributeEnd
 
 
 	#°º¤ø,¸¸,ø¤º°`°º¤ø,¸POSITIONING,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸
 	
-	Rotate 40 0 1 0
-	Translate -18 0 10
+	Rotate -45 0 1 0
+	Rotate 20 0 0 1
+	Translate 8 0 10
 	
- Scale 2 2 2	
+ 	Scale 1 1 1	
+
+	ReadArchive "RIB/position.rib"
 
 	# Rotate -30 1 0 0
 	# Rotate 90 0 1 0
@@ -67,7 +70,10 @@ WorldBegin
 		Displacement "shaders/doDisplace" "reference float disp" [ "diskTx:resultF" ] "float atten" [0.05]
 
 		Pattern "PxrOSL" "texture" "string shader" "shaders/tex" "color Cin" [1 0 0]
-    	Bxdf "PxrDisney" "forTheBody" "reference color baseColor" ["texture:Cout"]
+    	Bxdf "PxrDisney" "forTheBody" "reference color baseColor" ["texture:Cout"] 
+				"reference float metallic" ["texture:metal"] "float sheen" 1 
+				"reference float roughness" ["texture:rough"]
+				"float specular" 0.6
 
 		ReadArchive "RIB/book.rib"
 	AttributeEnd	

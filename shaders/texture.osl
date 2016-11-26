@@ -2,7 +2,9 @@ shader tex(
         float s = 0 [[int lockgeom = 0]],
         float t = 0 [[int lockgeom = 0]],
         color Cin=1, 
-        output color Cout=1)
+        output color Cout=1,
+        output float metal=0,
+        output float rough=0)
 {
     // How did you work these out, Tom?
     // Trial, error and an overheated laptop.
@@ -13,14 +15,19 @@ shader tex(
     point PP=transform("object",P); 
     color bookcol=color(0.608,0.078,0.102);
 
+
     //SPINE
-    if(PP[0]<-0.02 && PP[2]>0.5 && PP[2]<1.3) 
+    if(PP[0]<-0.05 && PP[2]>0.5 && PP[2]<1.3) 
     {
         bookcol=(color)texture("textures/labelTexture.tx",-PP[1]*mult+udispl, PP[2]*mult+vdispl, "wrap", "periodic");
+        if(bookcol[0]>0.4) metal=0.9;
+        else {metal=0; rough=0;}
     }
     else
     {
-        bookcol=color(0.608,0.078,0.102);
+        bookcol=color(0.643,0.066,0.055);
+        metal=0;
+        rough=0.5;
     }
 
     float noisecol = noise("perlin",PP);

@@ -3,13 +3,13 @@ LIBS=-L${RMANTREE}/lib -lprman -lm
 RENDERER=render
 DYLD_LIBRARY_PATH=${RMANTREE}/lib
 
-SCENE=label
+SCENE=position
 
-${SCENE}.rib : ${SCENE}.gen
-	LD_LIBRARY_PATH=${RMANTREE}/lib ./${SCENE}.gen $(length) $(thickness) $(spinecurve) $(lipdepth) $(height) >${SCENE}.rib
+../RIB/${SCENE}.rib : ${SCENE}.gen
+	LD_LIBRARY_PATH=${RMANTREE}/lib ./${SCENE}.gen $(_x) $(_y) $(_z) $(_rotatex) $(_rotatey) >../RIB/${SCENE}.rib
 
 ${SCENE}.gen : ${SCENE}.c
 	cc ${CFLAGS} -o ${SCENE}.gen  ${SCENE}.c ${LIBS}
 
 clean :
-	rm -f *.tiff *.gen book.rib
+	rm -f *.tiff *.gen position.rib

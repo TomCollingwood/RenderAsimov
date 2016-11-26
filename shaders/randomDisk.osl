@@ -25,9 +25,6 @@ output	float resultF=0
         disp+=sin(sinm*(PP[0]+noisestuff[0]))/sind;
         disp+=sin(sinm*(PP[2]+noisestuff[2]))/sind;
     }
-
-    
-
    
     resultF=-disp;
     //resultF=0;
