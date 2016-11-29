@@ -37,13 +37,19 @@ RISpec/position.gen : RISpec/position.c Makefile
 	cc ${CFLAGS} -o RISpec/position.gen  RISpec/position.c ${LIBS}
 
 shaders/randomDisk.oso : shaders/randomDisk.osl
+	cd shaders
 	oslc shaders/randomDisk.osl
+	cd ..
 
 shaders/randomDiskpaper.oso : shaders/randomDiskpaper.osl
+	cd shaders
 	oslc shaders/randomDiskpaper.osl
+	cd ..
 
 shaders/tex.oso : shaders/texture.osl 
+	cd shaders
 	oslc shaders/texture.osl 
+	cd ..
 
 clean :
 	rm -f *.tiff *.gen book.rib position.rib pages.rib
