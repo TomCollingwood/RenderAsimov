@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
         RiTranslate(_x,_y,_z);
         RiRotate(_rotatex,1,0,0);
         RiRotate(_rotatey,0,1,0);
+        RiScale(4,4,4);
 
     RiEnd();
 	return 0;

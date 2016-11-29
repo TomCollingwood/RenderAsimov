@@ -38,5 +38,7 @@ fi
 if [[ $platform == 'linux' ]]; then
    render RIB/main.rib
 elif [[ $platform == 'apple' ]]; then
-   prman -d it RIB/main.rib
+    #open -a 'it'
+    #prman -d it RIB/main.rib
+    render RIB/main.rib
 fi

@@ -1,6 +1,6 @@
 #pointlight.rib
-Display "pointlight.tiff" "framebuffer" "rgb"
-Format 1000 1000 1.0
+Display "pointlight.tiff" "file" "rgb"
+Format 1280 720 1.0
 #Exposure 1.2 2.2
 Quantize "rgba" 255 0 255 0
 
@@ -9,10 +9,10 @@ PixelVariance 0.01
  
 #°º¤ø,¸¸,ø¤º°`°º¤ø,¸INTEGRATORS,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸
 Hider "raytrace" "int incremental" [1]
-Integrator "PxrDefault" "integrator"
+#Integrator "PxrDefault" "integrator"
 #Integrator "PxrDirectLighting" "integrator"
 #Integrator "PxrPathTracer" "integrator"
-#Integrator "PxrVCM" "integrator"
+Integrator "PxrVCM" "integrator"
  
 Projection "perspective" "fov" [30]
  
