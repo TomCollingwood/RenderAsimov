@@ -1,25 +1,16 @@
 #!/bin/bash
 cd ~/Documents/GitHubStuff/RenderAsimov/
 
+git add Makefile README.md
 #C Files
-cd RISpec
-git add book.c pages.c label.c position.c
-#Make files (Makefile contains book parameters)
-git add Makefilebook Makefilelabel Makefilepages Makefileposition Makefile.sh
+git add RISpec/book.c RISpec/pages.c RISpec/label.c RISpec/position.c
 #Shader Files
-cd ../shaders
-git add doDisplace.sl randomDisk.osl randomDiskpaper.osl texture.osl doDisplace.slo
+git add shaders/doDisplace.sl shaders/randomDisk.osl shaders/randomDiskpaper.osl shaders/texture.osl shaders/doDisplace.slo
 #RIB file
-cd ../RIB
-git add main.rib 
+git add RIB/main.rib 
 #Scripts
-cd ..
 git add scripts/*
 #Textures
-cd textures
-git add labelTexture.tx labelTextureSquare.psd
-#Readme
-cd ..
-git add README.md
+git add textures/labelTexture.tx textures/labelTextureSquare.psd
 
 

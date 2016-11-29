@@ -1,6 +1,6 @@
 #pointlight.rib
-Display "pointlight.tiff" "file" "rgb"
-Format 1280 720 1.0
+Display "pointlight.tiff" "framebuffer" "rgb"
+Format 720 1280 1.0
 #Exposure 1.2 2.2
 Quantize "rgba" 255 0 255 0
 
@@ -40,13 +40,13 @@ WorldBegin
 
 	#°º¤ø,¸¸,ø¤º°`°º¤ø,¸POSITIONING,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸
 	
-	Rotate -45 0 1 0
-	Rotate 20 0 0 1
-	Translate 8 0 10
+	# Rotate -45 0 1 0
+	# Rotate 20 0 0 1
+	# Translate 8 0 10
 	
  	Scale 1 1 1	
 
-	ReadArchive "RIB/position.rib"
+	#ReadArchive "RIB/position.rib"
 
 	# Rotate -30 1 0 0
 	# Rotate 90 0 1 0
@@ -54,9 +54,17 @@ WorldBegin
 	# Translate -1.7 -1.4 0
 	# Scale 1.2 1.2 1.2
 
+# SEE LABEL WITH THIS
 	# Rotate 90 1 0 0
 	# Rotate 90 0 0 1
-	# Translate 1.5 0.1 -1
+	#Translate 1.5 0.1 -1
+
+	Rotate 90 1 0 0
+	Rotate 90 0 0 1
+	Translate 5.5 0.1 -1.6
+
+
+	ReadArchive "RIB/position.rib"
 
 	#°º¤ø,¸¸,ø¤º°`°º¤ø,¸SPLINES,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸
 	Basis "b-spline" 1 "bezier" 1
@@ -71,12 +79,12 @@ WorldBegin
 
 		Pattern "PxrOSL" "texture" "string shader" "shaders/tex" "color Cin" [1 0 0]
     	Bxdf "PxrDisney" "forTheBody" "reference color baseColor" ["texture:Cout"] 
-				"reference float metallic" ["texture:metal"] "float sheen" 1 
+				"reference float metallic" ["texture:metal"] "float sheen" 0.5 
 				"reference float roughness" ["texture:rough"]
-				"float specular" 0.6
-
+				"float specular" 0.4
 		ReadArchive "RIB/book.rib"
 	AttributeEnd	
+
 
 	#°º¤ø,¸¸,ø¤º°`°º¤ø,¸PAGES,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸
   	AttributeBegin
@@ -88,4 +96,5 @@ WorldBegin
 		Bxdf "PxrLMDiffuse" "diffuseOnlyMaterial" "color frontColor" [ 0.84706 0.82745 0.61569 ] "color backColor" [ 0.84706 0.82745 0.61569 ]
   		ReadArchive "RIB/pages.rib"
   	AttributeEnd
+
 WorldEnd

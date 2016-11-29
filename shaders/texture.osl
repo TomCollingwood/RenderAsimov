@@ -6,7 +6,7 @@ shader tex(
         output float metal=0,
         output float rough=0)
 {
-    // How did you work these out, Tom?
+ // How did you work these out, Tom?
     // Trial, error and an overheated laptop.
     float mult=1.24;
     float udispl=0.19; // LEFT <
@@ -20,7 +20,7 @@ shader tex(
     if(PP[0]<-0.05 && PP[2]>0.5 && PP[2]<1.3) 
     {
         bookcol=(color)texture("textures/labelTexture.tx",-PP[1]*mult+udispl, PP[2]*mult+vdispl, "wrap", "periodic");
-        if(bookcol[0]>0.4) metal=0.9;
+        if(bookcol[0]>0.4) metal=0.55;
         else {metal=0; rough=0;}
     }
     else

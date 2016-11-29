@@ -224,8 +224,8 @@ int main(int argc, char *argv[])
 		//----COVER2-----
 		{length-0.2,	0,		3*(height/3.)},
 		{length-0.1,	0,		3*(height/3.)},
-		{length,		0,		3*(height/3.)}, 
-		//----SMLRIDGE---
+		{length,		0,		3*(height/3.)},  
+		//----SMLRIDGE--- 
 		{length+0.01,	-lipdepth/3.,	3*(height/3.)}, 
 		{length+0.02,	-(lipdepth/3.)*2,	3*(height/3.)}, 
 		{length,		-lipdepth,	3*(height/3.)}, 

@@ -58,13 +58,14 @@ int main(int argc, char *argv[])
 {
 	// TWO PATCHES
 	{0,		0,		length-0.1},			// SO THIS is first ridge top.
-	{0.05,	-0.02,	length-0.1},
-	{0.1,	-0.05,	length-0.1},
+	{0.05,	-ridgedep2,	length-0.1},
+	{0.1,	-ridgedep1,	length-0.1},
 	{0.14,	0,		length-0.1},   // 1st is the right/left,  2nd is the height, 3rd value is depth.
 
 	{0.5,	0,		length-0.1},   // THIS IS second part of ridge 
 	{0.6,	0,		length-0.1},
 	{0.7,	0,		length-0.1},
+
 
 	{0,		-0.2,	length-0.1},
 	{0.05,	-0.22,	length-0.1},
@@ -92,8 +93,6 @@ int main(int argc, char *argv[])
 	{0.5,	-thickness,	length-0.1},
 	{0.6,	-thickness,	length-0.1},
 	{0.7,	-thickness,	length-0.1},
-
-
 };
 
 	RtPoint curvepage[16]=
@@ -146,7 +145,7 @@ int main(int argc, char *argv[])
 
 RtPoint topflat[4]=
 {
- 	{0.6,		0,			0.1},
+ 	{0.6,		0,			0.1}, 
  	{length-0.2,0,			0.1},
  	{0.6,		-thickness,	0.1},
  	{length-0.2,-thickness,	0.1}
@@ -154,13 +153,13 @@ RtPoint topflat[4]=
 
 
 RtPoint botflat[4]=
-{
+{ 
 	{0.14,		0,		2.9},
 	{length-0.1,0,		2.9},
 	{0.14,		-thickness,	2.9},
-	{length-0.1,-thickness,	2.9}
+	{length-0.1,-thickness,	2.9} 
 };
- 
+  
 
 RtPoint midflat[4]=
 {
@@ -181,8 +180,12 @@ RtPoint midflat[4]=
 		RiBasis(RiBezierBasis, RI_BEZIERSTEP, RiBezierBasis, RI_BEZIERSTEP);
 		RiPatch("bicubic","P",curvepage,RI_NULL); 
 		RiPatch("bicubic","P",midpages,RI_NULL);
-		RiPatch("bilinear","P",topflat,RI_NULL);
-		RiPatch("bilinear","P",botflat,RI_NULL);
+		//RiPatch("bilinear","P",topflat,RI_NULL);
+
+
+
+		
+		//RiPatch("bilinear","P",botflat,RI_NULL);
 		//RiPatch("bilinear","P",botflat,RI_NULL);
 		//RiPatch("bilinear","P",midflat,RI_NULL);
 

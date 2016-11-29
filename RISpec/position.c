@@ -6,19 +6,19 @@
 
 int main(int argc, char *argv[]) 
 {
-    float _x=atof(argv[1]);
-    float _y=atof(argv[2]);
-    float _z=atof(argv[3]);
+    float length=atof(argv[1]);
+    float thickness=atof(argv[2]); 
+    float height=atof(argv[3]);
     float _rotatex=atof(argv[4]);
-    float _rotatey=atof(argv[5]);
+    float _rotatey=atof(argv[5]); 
+    float _rotatez=atof(argv[6]);  
 
     RiBegin(RI_NULL);
-
-        RiTranslate(_x,_y,_z);
+        RiTranslate(length/2.,-thickness/2.,height/2.);
         RiRotate(_rotatex,1,0,0);
         RiRotate(_rotatey,0,1,0);
-        RiScale(4,4,4);
-
+        RiRotate(_rotatez,0,0,1); 
+        RiTranslate(-length/2.,thickness/2.,-height/2.);
     RiEnd();
 	return 0;
 
