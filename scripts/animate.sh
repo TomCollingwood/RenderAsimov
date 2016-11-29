@@ -1,25 +1,15 @@
 #!/bin/bash
-
-cd ~/Documents/GitHubStuff/RenderAsimov/RISpec
-
-declare x=0.0
-y=0.0
-z=0.0
-rotatex=0.0
-rotatey=0.0
-step=0
-maxframe=24
+cd ~/Documents/GitHubStuff/RenderAsimov/
+declare rotatez=0
+rotatex=0
+rotatey=0
 
 for i in {1..90}
 do
-    cd ~/Documents/GitHubStuff/RenderAsimov/RISpec
-    y=$(python -c "print $y-0.1")
-    rotatex=$(python -c "print $rotatex-0.3")
-    touch position.c
-    make _x=${x} _y=${y} _z=${z} _rotatex=${rotatex} _rotatey=${rotatey} -f Makefileposition
-    cd ~/Documents/GitHubStuff/RenderAsimov/scripts 
-    ./ragain.sh
-    cd ~/Documents/GitHubStuff/RenderAsimov
+    rotatez=$(python -c "print $rotatez-1")
+    touch RISpec/position.c
+    make rotatex=${rotatex} rotatey=${rotatey} rotatez=${rotatez} -f Makefileposition
+    prman -d it RIB/main.rib
     if [ "$step" -lt 10 ]
     then
     mv pointlight.tiff book0${step}.tiff
@@ -27,7 +17,7 @@ do
     mv pointlight.tiff book${step}.tiff
     fi
     step=$(($step + 1))
-    echo "###########################  Made frame ${step} / 24  #####################"
+    echo "###########################  Made frame ${step} / 90  #####################"
 done
 
 ffmpeg -framerate 24 -i book%02d.tiff -c:v libx264 -r 30 -pix_fmt yuv420p out.mp4

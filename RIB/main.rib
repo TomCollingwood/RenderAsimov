@@ -1,6 +1,6 @@
 #pointlight.rib
 Display "pointlight.tiff" "framebuffer" "rgb"
-Format 720 1280 1.0
+Format 1280 720 1.0
 #Exposure 1.2 2.2
 Quantize "rgba" 255 0 255 0
 
@@ -61,7 +61,7 @@ WorldBegin
 
 	Rotate 90 1 0 0
 	Rotate 90 0 0 1
-	Translate 5.5 0.1 -1.6
+	Translate 6.5 0.1 -1.6
 
 
 	ReadArchive "RIB/position.rib"

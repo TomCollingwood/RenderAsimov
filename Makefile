@@ -13,10 +13,10 @@ ridgedep1=0.05
 ridgedep2=0.02
 rotatex=0.0
 rotatey=0.0
-rotatez=41
+rotatez=210
 
 all: RIB/book.rib RISpec/book.gen RIB/pages.rib RISpec/pages.gen RIB/position.rib RISpec/position.gen shaders/randomDisk.oso shaders/randomDiskpaper.oso shaders/tex.oso
-	render RIB/main.rib
+	prman -d it RIB/main.rib
 
 RIB/book.rib : RISpec/book.gen
 	LD_LIBRARY_PATH=${RMANTREE}/lib ./RISpec/book.gen $(length) $(thickness) $(spinecurve) $(lipdepth) $(height) $(ridgedep1) $(ridgedep2) >RIB/book.rib
