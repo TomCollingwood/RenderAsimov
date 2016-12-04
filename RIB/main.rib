@@ -31,10 +31,10 @@ WorldBegin
 	AttributeBegin
 		AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [1]
 				"float enableEmissionMap" [1]
-				"string rman__EmissionMap" ["textures/space.tx"]
+				"string rman__EmissionMap" ["textures/myenv.tx"]
 				"float linearizeEmissionMap" [1]
 		Rotate -270 1 0 0 
-		Pattern "PxrTexture" "envTexture" "string filename" "textures/space.tx"
+		Pattern "PxrTexture" "envTexture" "string filename" "textures/myenv.tx"
 	
 		Bxdf "PxrDisney" "fortheEnvSphere" "reference color baseColor" ["envTexture:resultRGB"]
 		Geometry "envsphere" "constant float radius" [50]

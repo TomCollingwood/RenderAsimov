@@ -66,7 +66,6 @@ int main(int argc, char *argv[])
 	{0.6,	0,		length-0.1},
 	{0.7,	0,		length-0.1},
 
-
 	{0,		-0.2,	length-0.1},
 	{0.05,	-0.22,	length-0.1},
 	{0.1,	-0.25,	length-0.1},
@@ -125,15 +124,15 @@ int main(int argc, char *argv[])
 			{length-0.1,0,(height/3)*2}, 
 			{length-0.1,0,height-0.1},
 
-			{length-pagecurve,-thickness/3,0.1},
-			{length-pagecurve,-thickness/3,height/3},
-			{length-pagecurve,-thickness/3,(height/3)*2},
-			{length-pagecurve,-thickness/3,height-0.1},
+			{length-pagecurve,0,0.1},
+			{length-pagecurve,0,height/3},
+			{length-pagecurve,0,(height/3)*2},
+			{length-pagecurve,0,height-0.1},
 
-			{length-pagecurve,-2*(thickness/3),0.1},
-			{length-pagecurve,-2*(thickness/3),height/3},
-			{length-pagecurve,-2*(thickness/3),(height/3)*2},
-			{length-pagecurve,-2*(thickness/3),height-0.1},
+			{length-pagecurve,-thickness,0.1},
+			{length-pagecurve,-thickness,height/3},
+			{length-pagecurve,-thickness,(height/3)*2},
+			{length-pagecurve,-thickness,height-0.1},
 
 			{length-0.1,-thickness,0.1},
 			{length-0.1,-thickness,height/3},
@@ -177,14 +176,11 @@ RtPoint midflat[4]=
 		RiPatchMesh("bicubic",7,"nonperiodic",4,"nonperiodic","P",toppages,RI_NULL); 
 
 		
-		RiBasis(RiBezierBasis, RI_BEZIERSTEP, RiBezierBasis, RI_BEZIERSTEP);
 		RiPatch("bicubic","P",curvepage,RI_NULL); 
+		RiBasis(RiBezierBasis, RI_BEZIERSTEP, RiBezierBasis, RI_BEZIERSTEP);
 		RiPatch("bicubic","P",midpages,RI_NULL);
-		//RiPatch("bilinear","P",topflat,RI_NULL);
+		RiPatch("bilinear","P",topflat,RI_NULL);
 
-
-
-		
 		//RiPatch("bilinear","P",botflat,RI_NULL);
 		//RiPatch("bilinear","P",botflat,RI_NULL);
 		//RiPatch("bilinear","P",midflat,RI_NULL);

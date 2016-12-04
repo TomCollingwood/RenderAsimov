@@ -19,19 +19,21 @@ int main(int argc, char *argv[])
 	//some checks
 	if(thickness<0.4) thickness=0.4;
 
+	float r_0=lipdepth;
+		float r_1=0.05;
+
 	RtPoint cover[136]={
-	//------------Z0--------------#include <stdlib.h>
-#include <stdio.h>
+	//------------Z0--------------
 
 		//----FOLD-----
-		{length-0.3,	-thickness+0.03,		0},
-		{length-0.2,	-thickness+0.03,		0},
-		{length-0.1,	-thickness+0.03,		0},
+		{length-0.3,	-thickness+r_0,		0},
+		{length-0.2,	-thickness+r_0,		0},
+		{length-0.1,	-thickness+r_0,		0},
 
 		//----SMLRIDGE---
-		{length,		-thickness+0.03,		0},
-		{length+0.02,	-thickness+0.02,		0},
-		{length+0.01,	-thickness+0.01,		0},
+		{length,		-thickness+r_0,		0},
+		{length+r_1,	-thickness+r_0,		0},
+		{length+r_1,	-thickness,		0},
 
 		//----COVER2-----
 		{length,		-thickness,		0},
@@ -77,14 +79,14 @@ int main(int argc, char *argv[])
 	
 	//------------Z1--------------
 		//----FOLD-----
-		{length-0.3,	-thickness+0.03,	height/3.},   //x y z
-		{length-0.2,	-thickness+0.03,	height/3.},
-		{length-0.1,	-thickness+0.03,	height/3.},
+		{length-0.3,	-thickness+r_0,		height/3.},
+		{length-0.2,	-thickness+r_0,		height/3.},
+		{length-0.1,	-thickness+r_0,		height/3.},
 
 		//----SMLRIDGE---
-		{length,		-thickness+0.03,	height/3.},
-		{length+0.02,	-thickness+0.02,	height/3.},
-		{length+0.01,	-thickness+0.01,	height/3.},
+		{length,		-thickness+r_0,		height/3.},
+		{length+r_1,	-thickness+r_0,		height/3.},
+		{length+r_1,	-thickness,		height/3.},
 
 		//----COVER2-----
 		{length,		-thickness,		height/3.},
@@ -130,14 +132,14 @@ int main(int argc, char *argv[])
 
 	//------------Z2--------------
 		//----FOLD-----
-		{length-0.3,	-thickness+0.03,	2*(height/3.)},
-		{length-0.2,	-thickness+0.03,	2*(height/3.)},
-		{length-0.1,	-thickness+0.03,	2*(height/3.)},
+		{length-0.3,	-thickness+r_0,		2*(height/3.)},
+		{length-0.2,	-thickness+r_0,		2*(height/3.)},
+		{length-0.1,	-thickness+r_0,		2*(height/3.)},
 
 		//----SMLRIDGE---
-		{length,		-thickness+0.03,	2*(height/3.)},
-		{length+0.02,	-thickness+0.02,	2*(height/3.)},
-		{length+0.01,	-thickness+0.01,	2*(height/3.)},
+		{length,		-thickness+r_0,		2*(height/3.)},
+		{length+r_1,	-thickness+r_0,		2*(height/3.)},
+		{length+r_1,	-thickness,		2*(height/3.)},
 
 		//----COVER2-----
 		{length,		-thickness,		2*(height/3.)},
@@ -182,20 +184,20 @@ int main(int argc, char *argv[])
 		{length-0.3,	-lipdepth,	2*(height/3.)},
 
 	//------------Z3--------------
-			//----FOLD-----
-		{length-0.3,	-thickness+0.03,	3*(height/3.)},
-		{length-0.2,	-thickness+0.03,	3*(height/3.)},
-		{length-0.1,	-thickness+0.03,	3*(height/3.)},
+		//----FOLD-----
+		{length-0.3,	-thickness+r_0,		height},
+		{length-0.2,	-thickness+r_0,		height},
+		{length-0.1,	-thickness+r_0,		height},
 
 		//----SMLRIDGE---
-		{length,		-thickness+0.03,	3*(height/3.)},
-		{length+0.02,	-thickness+0.02,	3*(height/3.)},
-		{length+0.01,	-thickness+0.01,	3*(height/3.)},
+		{length,		-thickness+r_0,		height},
+		{length+r_1,	-thickness+r_0,		height},
+		{length+r_1,	-thickness,		height},
 
 		//----COVER2-----
-		{length,		-thickness,		3*(height/3.)},
-		{length-0.1,	-thickness,		3*(height/3.)},
-		{length-0.2,	-thickness,		3*(height/3.)}, 
+		{length,		-thickness,		height},
+		{length-0.1,	-thickness,		height},
+		{length-0.2,	-thickness,		height}, 
 
 		//----COVER1-----
 		{0.7,	-thickness,	3*(height/3.)},
@@ -234,12 +236,10 @@ int main(int argc, char *argv[])
 		{length-0.2,	-lipdepth,	3*(height/3.)},
 		{length-0.3,	-lipdepth,	3*(height/3.)},	};
 
-		float r_0=lipdepth;
-		float r_1=0.05;
+		
 		
 	RtPoint toplip[88]={
 		//-------------Z0-----------------------
-
 		//----COVER2-----
 		{length,		-thickness,		0},
 		{length-0.1,	-thickness,		0},
@@ -275,7 +275,7 @@ int main(int argc, char *argv[])
 
 		//-------------Z1-----------------------
 		//----COVER2-----
-		{length,		-thickness,		-r_1},
+		{length+0.5,		-thickness,		-r_1},
 		{length-0.1,	-thickness,		-r_1},
 		{length-0.2,	-thickness,		-r_1}, 
 
@@ -305,11 +305,11 @@ int main(int argc, char *argv[])
 		//----COVER2-----
 		{length-0.2,	0,		-r_1},
 		{length-0.1,	0,		-r_1},
-		{length,		0,		-r_1}, 
+		{length+0.5,		0,		-r_1}, 
 
 		//-------------Z2-----------------------
 		//----COVER2-----
-		{length,		-thickness+r_0,		-r_1},
+		{length+0.5,		-thickness+r_0,		-r_1},
 		{length-0.1,	-thickness+r_0,		-r_1},
 		{length-0.2,	-thickness+r_0,		-r_1}, 
 
@@ -339,11 +339,11 @@ int main(int argc, char *argv[])
 		//----COVER2-----
 		{length-0.2,	0-r_0,	-r_1},
 		{length-0.1,	0-r_0,	-r_1},
-		{length,		0-r_0,	-r_1}, 
+		{length+0.5,		0-r_0,	-r_1}, 
 
 		//-------------Z3-----------------------
 		//----COVER2-----
-		{length,		-thickness+r_0,		0},
+		{length+0.5,		-thickness+r_0,		0},
 		{length-0.1,	-thickness+r_0,		0},
 		{length-0.2,	-thickness+r_0,		0}, 
 
@@ -373,7 +373,7 @@ int main(int argc, char *argv[])
 		//----COVER2-----
 		{length-0.2,	0-r_0,		0},
 		{length-0.1,	0-r_0,		0},
-		{length,		0-r_0,		0}
+		{length+0.5,		0-r_0,		0}
 	};
 
 	RtPoint corner1[16]={
@@ -395,7 +395,7 @@ int main(int argc, char *argv[])
 		{length,		-thickness+0.03,		0},
 		{length+0.02,	-thickness+0.02,		0},
 		{length+0.01,	-thickness+0.01,		0},
-		{length,		-thickness,		0}
+		{length+0.5,		-thickness,		0}
 
 	}; 
 
