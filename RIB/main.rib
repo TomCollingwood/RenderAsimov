@@ -29,8 +29,8 @@ WorldBegin
 	# LightSource "ambientlight" 1 "intensity" 3
 
 	AttributeBegin
-		AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [0.2]
-				"float enableEmissionMap" [0.5]
+		AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [1]
+				"float enableEmissionMap" [1]
 				"string rman__EmissionMap" ["textures/myenv.tx"]
 				"float linearizeEmissionMap" [1]
 		Rotate -270 1 0 0 
