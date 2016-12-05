@@ -6,12 +6,12 @@ output	float resultF=0
     point PP=transform("object",P); 
     float disp=0;
     float fuzz=0.1;
-    float sinm=500.;
+    float sinm=900.;
     float sind=20.;
 
 
-    point noisestuff=noise("perlin",PP*13);
-    noisestuff/=300;
+    point noisestuff=noise("perlin",PP*8);
+    noisestuff/=350;
 
     //disp+=sin(sinm*(PP[0]+noisestuff[0]))/sind;
     float perlinn=noise("perlin",PP[1]);

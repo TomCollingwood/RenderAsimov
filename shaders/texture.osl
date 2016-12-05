@@ -15,24 +15,30 @@ shader tex(
     point PP=transform("object",P); 
     color bookcol=color(0.608,0.078,0.102);
 
-    bookcol=color(0.643,0.066,0.055);
+
+    bookcol=color(160./255.,25./255.,30./255.);
     metal=0;
     rough=0.6;
 
+    point PPnoise = PP*8;
+    if(PP[0]<-0.05) PPnoise[1]*=15;
+    else PPnoise[0]*=15;
+    float noisecol = 1+noise("perlin",PPnoise);
+    bookcol=bookcol-color(noisecol,noisecol,noisecol)/50;///20.;
+
     //SPINE
-    if(PP[0]<-0.05 && PP[2]>0.5 && PP[2]<1.3) 
+    if(PP[0]<-0.01 && PP[2]>0.5 && PP[2]<1.3) 
     {
         bookcol=(color)texture("textures/labelTexture.tx",-PP[1]*mult+udispl, PP[2]*mult+vdispl, "wrap", "periodic");
         if(bookcol[0]>0.4) metal=0.55; //GOLD TEXT
         else {metal=0; rough=0.4;}
     }
-    else if(PP[0]<-0.05 && PP[2]>2.5 && PP[2]<3.3) 
+    else if(PP[0]<-0.01 && PP[2]>2.5 && PP[2]<3.3) 
     {
         color textcol=(color)texture("textures/publisherTexture.tx",-PP[1]*mult+udispl, PP[2]*mult+vdispl, "wrap", "periodic");
-        if(textcol[0]>0.4) metal=0.55; //GOLD TEXT
+        if(textcol[0]>0.4) metal=0.6; //GOLD TEXT
         color white=color(1,1,1);
         bookcol=white-((white-textcol)*(white-bookcol)); // Like Screen blending mode in photoshop
     }
-    float noisecol = noise("perlin",PP);
-    Cout=bookcol-color(noisecol,noisecol,noisecol)/10.;
+    Cout = bookcol;
 }

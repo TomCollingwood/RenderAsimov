@@ -7,25 +7,26 @@ SCENE=book
 length=2
 thickness=0.5
 spinecurve=0.03
-lipdepth=0.03
+lipdepth=0.02
 height=3
 ridgedep1=0.05
 ridgedep2=0.02
 rotatex=0.0
 rotatey=0
-rotatez=30
+rotatez=180
+spinedepth=0.05
 
 all: RIB/book.rib RISpec/book.gen RIB/pages.rib RISpec/pages.gen RIB/position.rib RISpec/position.gen shaders/randomDisk.oso shaders/randomDiskpaper.oso shaders/tex.oso
 	prman -d it RIB/main.rib
 
 RIB/book.rib : RISpec/book.gen
-	LD_LIBRARY_PATH=${RMANTREE}/lib ./RISpec/book.gen $(length) $(thickness) $(spinecurve) $(lipdepth) $(height) $(ridgedep1) $(ridgedep2) >RIB/book.rib
+	LD_LIBRARY_PATH=${RMANTREE}/lib ./RISpec/book.gen $(length) $(thickness) $(spinecurve) $(lipdepth) $(height) $(ridgedep1) $(ridgedep2) $(spinedepth) >RIB/book.rib
 
 RISpec/book.gen : RISpec/book.c Makefile
 	cc ${CFLAGS} -o RISpec/book.gen  RISpec/book.c ${LIBS}
 
 RIB/pages.rib : RISpec/pages.gen
-	LD_LIBRARY_PATH=${RMANTREE}/lib ./RISpec/pages.gen $(thickness) $(length) $(height) $(ridgedep1) $(ridgedep2) >RIB/pages.rib
+	LD_LIBRARY_PATH=${RMANTREE}/lib ./RISpec/pages.gen $(thickness) $(length) $(height) $(ridgedep1) $(ridgedep2) $(lipdepth) >RIB/pages.rib
 
 RISpec/pages.gen : RISpec/pages.c Makefile
 	cc ${CFLAGS} -o RISpec/pages.gen  RISpec/pages.c ${LIBS} 

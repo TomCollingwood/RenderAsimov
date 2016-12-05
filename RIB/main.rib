@@ -1,6 +1,6 @@
 #pointlight.rib
 Display "pointlight.tiff" "framebuffer" "rgb"
-Format 1280 720 1.0
+Format 1920 1080 1.0
 #Exposure 1.2 2.2
 Quantize "rgba" 255 0 255 0
 
@@ -29,15 +29,15 @@ WorldBegin
 	# LightSource "ambientlight" 1 "intensity" 3
 
 	AttributeBegin
-		AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [1]
-				"float enableEmissionMap" [1]
+		AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [0.2]
+				"float enableEmissionMap" [0.5]
 				"string rman__EmissionMap" ["textures/myenv.tx"]
 				"float linearizeEmissionMap" [1]
 		Rotate -270 1 0 0 
 		Pattern "PxrTexture" "envTexture" "string filename" "textures/myenv.tx"
 	
 		Bxdf "PxrDisney" "fortheEnvSphere" "reference color baseColor" ["envTexture:resultRGB"]
-		Geometry "envsphere" "constant float radius" [50]
+		Geometry "envsphere" "constant float radius" [100]
 	AttributeEnd
 
 
@@ -82,7 +82,7 @@ WorldBegin
 
 		Pattern "PxrOSL" "texture" "string shader" "shaders/tex" "color Cin" [1 0 0]
     	Bxdf "PxrDisney" "forTheBody" "reference color baseColor" ["texture:Cout"] 
-				"reference float metallic" ["texture:metal"] "float sheen" 0.5 
+				"reference float metallic" ["texture:metal"] "float sheen" 0
 				"reference float roughness" ["texture:rough"]
 				"float specular" 0.4
 		ReadArchive "RIB/book.rib"
@@ -96,7 +96,7 @@ WorldBegin
 		Pattern "PxrOSL" "diskTxpaper" "string shader" [ "shaders/randomDiskpaper"]
 		Displacement "shaders/doDisplace" "reference float disp" [ "diskTxpaper:resultF" ] "float atten" [0.05]
 	
-		Bxdf "PxrLMDiffuse" "diffuseOnlyMaterial" "color frontColor" [ 0.84706 0.82745 0.61569 ] "color backColor" [ 0.84706 0.82745 0.61569 ]
+		Bxdf "PxrLMDiffuse" "diffuseOnlyMaterial" "color frontColor" [ 1 1 0.5 ] "color backColor" [  1 1 0.9 ]
   		ReadArchive "RIB/pages.rib"
   	AttributeEnd
 

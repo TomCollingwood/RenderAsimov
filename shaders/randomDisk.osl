@@ -6,11 +6,12 @@ output	float resultF=0
     point PP=transform("object",P); 
     float disp=0;
     float fuzz=0.1;
-    float sinm=500.;
+    float sinm=700.;
     float sind=100.;
 
     point noisestuff=noise("perlin",PP*13);
     noisestuff/=300;
+
 
     //SPINE
     if(PP[0]<0)
