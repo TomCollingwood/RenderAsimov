@@ -1,14 +1,17 @@
 #pointlight.rib
 Display "pointlight.tiff" "framebuffer" "rgb"
-Format 1920 1080 1.0
+Format 1280 720 1.0
 #Exposure 1.2 2.2
 Quantize "rgba" 255 0 255 0
 
-PixelVariance 0.01
+PixelVariance 0.000001
+
 #PixelVariance 10
+
+
  
 #°º¤ø,¸¸,ø¤º°`°º¤ø,¸INTEGRATORS,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸
-Hider "raytrace" "int incremental" [1]
+Hider "raytrace" "int incremental" [1] "int maxsamples" [1024]
 #Integrator "PxrDefault" "integrator"
 #Integrator "PxrDirectLighting" "integrator"
 #Integrator "PxrPathTracer" "integrator"
@@ -29,7 +32,7 @@ WorldBegin
 	# LightSource "ambientlight" 1 "intensity" 3
 
 	AttributeBegin
-		AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [1]
+		AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [1.5]
 				"float enableEmissionMap" [1]
 				"string rman__EmissionMap" ["textures/myenv.tx"]
 				"float linearizeEmissionMap" [1]
