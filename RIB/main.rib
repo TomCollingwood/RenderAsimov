@@ -1,8 +1,11 @@
 #pointlight.rib
-Display "pointlight.tiff" "framebuffer" "rgb"
+Display "pointlight.tiff" "file" "rgb"
 Format 1280 720 1.0
 #Exposure 1.2 2.2
 Quantize "rgba" 255 0 255 0
+
+DepthOfField 22 5 3.4
+
 
 PixelVariance 0.000001
 
@@ -15,7 +18,7 @@ Integrator "PxrVCM" "integrator"
  
 Projection "perspective" "fov" [30]
  
-# Translate 0 0 5
+ Translate 0 -1 -3
  
 WorldBegin
 	#°º¤ø,¸¸,ø¤º°`°º¤ø,¸LIGHTING,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸

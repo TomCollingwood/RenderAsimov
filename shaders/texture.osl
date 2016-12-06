@@ -28,19 +28,19 @@ shader tex(
     float spineLOGIC = 1-smoothstep(-0.021,-0.02,PP[0]);
     float negSpineLOGIC = 1-spineLOGIC;
 
-    PPnoise[1]*=(spineLOGIC*10+1);
-    PPnoise[2]/=(spineLOGIC+1);
+    PPnoise[1]*=(spineLOGIC*7+1);
+    PPnoise[2]/=(spineLOGIC*2+1);
 
     PPnoise[0]*=(negSpineLOGIC*10+1);
     PPnoise[2]/=(negSpineLOGIC+1);
 
     float noisecol = noise("perlin",PPnoise);
-    bookCol=bookCol-color(noisecol,noisecol,noisecol)/35;
+    bookCol=bookCol-color(noisecol,noisecol,noisecol)/40;
 
     //-----------------------
     //---BLACK LABEL LOGIC---
     //-----------------------
-    float labelAND1 = smoothstep(-0.0251,-0.025,PP[0]);
+    float labelAND1 = smoothstep(-0.051,-0.05,PP[0]);
     float labelAND2 = smoothstep(0.5,0.51,PP[2]);
     float labelAND3 = smoothstep(1.3,1.31,PP[2]);
     float labelLogic = (1-labelAND1)*labelAND2*(1-labelAND3);
@@ -73,8 +73,11 @@ shader tex(
 
     float goldAND = goldANDlabel*goldANDpub;
 
-    metal*=(1-goldAND);
-    metal+=goldAND*0.55;
+    metal*=(1-goldANDlabel);
+    metal+=goldANDlabel*0.7;
+
+    metal*=(1-goldANDpub);
+    metal+=goldANDpub*0.7;
         
     Cout = bookCol;
 }
