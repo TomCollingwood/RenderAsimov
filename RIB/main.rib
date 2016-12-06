@@ -6,10 +6,6 @@ Quantize "rgba" 255 0 255 0
 
 PixelVariance 0.000001
 
-#PixelVariance 10
-
-
- 
 #°º¤ø,¸¸,ø¤º°`°º¤ø,¸INTEGRATORS,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸
 Hider "raytrace" "int incremental" [1] "int maxsamples" [1024]
 #Integrator "PxrDefault" "integrator"
@@ -43,32 +39,12 @@ WorldBegin
 		Geometry "envsphere" "constant float radius" [100]
 	AttributeEnd
 
-
 	#°º¤ø,¸¸,ø¤º°`°º¤ø,¸POSITIONING,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸
-	
-	# Rotate -45 0 1 0
-	# Rotate 20 0 0 1
-	# Translate 8 0 10
-	
  	Scale 1 1 1	
-
-	#ReadArchive "RIB/position.rib"
-
-	# Rotate -30 1 0 0
-	# Rotate 90 0 1 0
-	# Rotate 0 0 0 1
-	# Translate -1.7 -1.4 0
-	# Scale 1.2 1.2 1.2
-
-# SEE LABEL WITH THIS
-	# Rotate 90 1 0 0
-	# Rotate 90 0 0 1
-	#Translate 1.5 0.1 -1
 
 	Rotate 90 1 0 0
 	Rotate 90 0 0 1
 	Translate 6.5 0.1 -1.6
-
 
 	ReadArchive "RIB/position.rib"
 
@@ -90,7 +66,6 @@ WorldBegin
 				"float specular" 0.4
 		ReadArchive "RIB/book.rib"
 	AttributeEnd	
-
 
 	#°º¤ø,¸¸,ø¤º°`°º¤ø,¸PAGES,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸
   	AttributeBegin

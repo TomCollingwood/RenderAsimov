@@ -12,20 +12,16 @@ output	float resultF=0
     point noisestuff=noise("perlin",PP*13);
     noisestuff/=300;
 
+    // if(P[0]<0)
+    float spineLOGIC = 1-smoothstep(0,0.01,PP[0]);
+    float negSpineLOGIC = 1-spineLOGIC;
 
-    //SPINE
-    if(PP[0]<0)
-    {
-        disp+=sin(sinm*(PP[2]+noisestuff[2]))/sind;
-        disp+=sin(sinm*(PP[1]+noisestuff[1]))/sind;
-    }
-    else
-    {
-        disp+=sin(sinm*(PP[0]+noisestuff[0]))/sind;
-        disp+=sin(sinm*(PP[2]+noisestuff[2]))/sind;
-    }
-   
+    disp+=(sin(sinm*(PP[2]+noisestuff[2]))/sind)*spineLOGIC;
+    disp+=(sin(sinm*(PP[1]+noisestuff[1]))/sind)*spineLOGIC;
+
+    disp+=(sin(sinm*(PP[0]+noisestuff[0]))/sind)*negSpineLOGIC;
+    disp+=(sin(sinm*(PP[2]+noisestuff[2]))/sind)*negSpineLOGIC;
+ 
     resultF=-disp; 
-    //resultF=0;
 }
 
