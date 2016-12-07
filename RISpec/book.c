@@ -450,10 +450,22 @@ int main(int argc, char *argv[])
 
 	};
 
+	RtPoint plane[4] = {
+		{-2,-thickness*4,-1},
+		{-2,-thickness*4,2},
+		{2,-thickness*4,2},
+		{2,-thickness*4,-1}
+		
+	};
+
 	RiBegin(RI_NULL);	
 		//RiBasis(RiBezierBasis, RI_BEZIERSTEP, RiBezierBasis, RI_BEZIERSTEP);	
 		RiPatchMesh("bicubic",34,"nonperiodic",4,"nonperiodic","P",cover,RI_NULL);	
 		RiPatchMesh("bicubic",28,"nonperiodic",4,"nonperiodic","P",toplip,RI_NULL);	
+
+		// RtColor gray = {0.5,0.5,0.5};
+		// RiBxdf("PxrDisney","forThePlane","color baseColor",gray,RI_NULL);
+		// RiPolygon (4, RI_P, plane, RI_NULL);
 		//RiPatch("bicubic","P",corner1,RI_NULL);
 	RiEnd();
 	return 0;
