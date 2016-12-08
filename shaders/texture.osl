@@ -20,7 +20,7 @@ shader tex(
     point PP=transform("object",P); 
     color bookCol=color(0.608,0.078,0.102);
 
-    bookCol=color(140./255.,25./255.,40./255.);
+    bookCol=color(170./255.,10./255.,25./255.);
     metal=0;
     rough=0.6;
 

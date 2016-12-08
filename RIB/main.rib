@@ -12,7 +12,7 @@ DepthOfField 22 4 6.8
 PixelVariance 0.000001
 
 #°º¤ø,¸¸,ø¤º°`°º¤ø,¸INTEGRATORS,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸
-Hider "raytrace" #"int incremental" [1] #"int maxsamples" [1024]
+Hider "raytrace" "int incremental" [1] #"int maxsamples" [1024]
 #Integrator "PxrDefault" "integrator"
 #Integrator "PxrDirectLighting" "integrator"
 #Integrator "PxrPathTracer" "integrator"
@@ -34,7 +34,7 @@ WorldBegin
 	# LightSource "ambientlight" 1 "intensity" 3
 
 	AttributeBegin
-		AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [2]
+		AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [1]
 				"float enableEmissionMap" [1]
 				"string rman__EmissionMap" ["textures/myenv.tx"]
 				"float linearizeEmissionMap" [1]
