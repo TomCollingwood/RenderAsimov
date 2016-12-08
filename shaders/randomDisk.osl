@@ -13,7 +13,7 @@ output	float resultF=0
     noisestuff/=300;
 
     // if(P[0]<0)
-    float spineLOGIC = 1-smoothstep(0,0.01,PP[0]);
+    float spineLOGIC = 1-smoothstep(0,0.03,PP[0]);
     float negSpineLOGIC = 1-spineLOGIC;
 
     disp+=(sin(sinm*(PP[2]+noisestuff[2]))/sind)*spineLOGIC;

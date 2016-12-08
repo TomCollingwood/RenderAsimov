@@ -364,109 +364,50 @@ int main(int argc, char *argv[])
 		{length+r_3,		0-r_0,	0},  
 
 		//-------------Z3-----------------------
-		{length+r_1,		-thickness+r_0,		0},
-		{length+r_3/3,		-thickness+r_0,		0},
-		{length+r_3/3,		-thickness+r_0,		0},
+		{length+r_1,		-thickness+r_0,		0.05},
+		{length+r_3/3,		-thickness+r_0,		0.05},
+		{length+r_3/3,		-thickness+r_0,		0.05},
 		//----COVER2-----
-		{length+r_3/3,		-thickness+r_0,		0},
-		{length-0.1,	-thickness+r_0,		0},
-		{length-0.2,	-thickness+r_0,		0}, 
+		{length+r_3/3,		-thickness+r_0,		0.05},
+		{length-0.1,	-thickness+r_0,		0.05},
+		{length-0.2,	-thickness+r_0,		0.05}, 
 
 		//----COVER1-----
-		{0.7,	-thickness+r_0,	0},
-		{0.6,	-thickness+r_0,	0},
-		{0.5,	-thickness+r_0,	0},
+		{0.7,	-thickness+r_0,	0.05},
+		{0.6,	-thickness+r_0,	0.05},
+		{0.5,	-thickness+r_0,	0.05},
 
 		//----RIDGE------
-		{0.14, 	-thickness+r_0, 	0}, 
-		{0.1,	-thickness+r_0+0.05,	0},
-		{0.05,	-thickness+r_0+0.02,	0},
+		{0.14, 	-thickness+r_0, 	0.05}, 
+		{0.1,	-thickness+r_0+0.05,	0.05},
+		{0.05,	-thickness+r_0+0.02,	0.05},
 
 		//----SPINE---------
-		{0,		-thickness+r_0,  	0},		
-		{-spinedepth+r_0, 	-thickness+spinecurve,	0},	
-		{-spinedepth+r_0, 	-spinecurve, 	0},	
-		{0, 	-r_0,		0},	
+		{0,		-thickness+r_0,  	0.05},		
+		{-spinedepth+r_0, 	-thickness+spinecurve,	0.05},	
+		{-spinedepth+r_0, 	-spinecurve, 	0.05},	
+		{0, 	-r_0,		0.05},	
 		//----RIDGE------
-		{0.05, 	-0.02-r_0, 	0}, 
-		{0.1,	-0.05-r_0,	0},		
-		{0.14,	0-r_0,		0},
+		{0.05, 	-0.02-r_0, 	0.05}, 
+		{0.1,	-0.05-r_0,	0.05},		
+		{0.14,	0-r_0,		0.05},
 		//----COVER1-----
-		{0.5,		0-r_0,		0},
-		{0.6,		0-r_0,		0},
-		{0.7,		0-r_0,		0},
+		{0.5,		0-r_0,		0.05},
+		{0.6,		0-r_0,		0.05},
+		{0.7,		0-r_0,		0.05},
 		//----COVER2-----
-		{length-0.2,	0-r_0,		0},
-		{length-0.1,	0-r_0,		0},
-		{length+r_3/3,	0-r_0,		0},
+		{length-0.2,	0-r_0,		0.05},
+		{length-0.1,	0-r_0,		0.05},
+		{length+r_3/3,	0-r_0,		0.05},
 
-		{length+r_3/3,	0-r_0,		0},
-		{length+r_3/3,	0-r_0,		0},
-		{length+r_1,	0-r_0,		0}
+		{length+r_3/3,	0-r_0,		0.05},
+		{length+r_3/3,	0-r_0,		0.05},
+		{length+r_1,	0-r_0,		0.05}
 	};
 
-	// RtPoint corner1[16]={
-	// 	{length,	-thickness,		0},
-	// 	{length,	-thickness,		-r_1},
-	// 	{length,	-thickness+r_0,		-r_1},
-	// 	{length,	-thickness+r_0,		0},
-
-	// 	{length+0.01,	-thickness,		0},
-	// 	{length+0.01,	-thickness,		-r_1},
-	// 	{length+0.01,	-thickness+r_0,		-r_1},
-	// 	{length+0.01,	-thickness+r_0,		0},
-
-	// 	{length,		-thickness+0.03,	-0.01},
-	// 	{length+0.02,	-thickness+0.02,	-0.01},
-	// 	{length+0.01,	-thickness+0.01,	-0.01},
-	// 	{length,		-thickness,			-0.01},
-
-	// 	{length,		-thickness+0.03,		0},
-	// 	{length+0.02,	-thickness+0.02,		0},
-	// 	{length+0.01,	-thickness+0.01,		0},
-	// 	{length+0.5,		-thickness,		0}
-	// }; 
-
-	RtPoint corner1[16]={
-		{length-0.1, -thickness+r_0, 0},
-		{length-0.1, -thickness+r_0, -r_1},
-		{length-0.1, -thickness, -r_1},
-		{length-0.1, -thickness, 0},
-
-		{length+0.5, -thickness+r_0, 0},
-		{length+0.5, -thickness+r_0, -r_1},
-		{length+0.5, -thickness, -r_1},
-		{length+0.5, -thickness, 0},
-
-		{length+0.5, -thickness+r_0, 0},
-		{length+r_1, -thickness+r_0, 0},
-		{length+r_1, -thickness, 0},
-		{length+0.5, -thickness, 0},
-
-		{length+0.5, -thickness+r_0, -0.1},
-		{length+r_1, -thickness+r_0, -0.1},
-		{length+r_1, -thickness, -0.1},
-		{length+0.5, -thickness, -0.1},
-
-	};
-
-	RtPoint plane[4] = {
-		{-2,-thickness*4,-1},
-		{-2,-thickness*4,2},
-		{2,-thickness*4,2},
-		{2,-thickness*4,-1}
-		
-	};
-
-	RiBegin(RI_NULL);	
-		//RiBasis(RiBezierBasis, RI_BEZIERSTEP, RiBezierBasis, RI_BEZIERSTEP);	
+	RiBegin(RI_NULL);		
 		RiPatchMesh("bicubic",34,"nonperiodic",4,"nonperiodic","P",cover,RI_NULL);	
 		RiPatchMesh("bicubic",28,"nonperiodic",4,"nonperiodic","P",toplip,RI_NULL);	
-
-		// RtColor gray = {0.5,0.5,0.5};
-		// RiBxdf("PxrDisney","forThePlane","color baseColor",gray,RI_NULL);
-		// RiPolygon (4, RI_P, plane, RI_NULL);
-		//RiPatch("bicubic","P",corner1,RI_NULL);
 	RiEnd();
 	return 0;
 }

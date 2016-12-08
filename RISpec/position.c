@@ -15,9 +15,10 @@ int main(int argc, char *argv[])
 
     RiBegin(RI_NULL);
         RiTranslate(length/2.,-thickness/2.,height/2.);
+        RiRotate(_rotatez,0,0,1); 
         RiRotate(_rotatex,1,0,0);
         RiRotate(_rotatey,0,1,0);
-        RiRotate(_rotatez,0,0,1); 
+        
         RiTranslate(-length/2.,thickness/2.,-height/2.);
     RiEnd();
 	return 0;

@@ -11,6 +11,6 @@ git add RIB/main.rib
 #Scripts
 git add scripts/*
 #Textures
-git add textures/labelTexture.tx textures/labelTextureSquare.psd textures/publisherTexture.tx textures/publisherTextureSquare.psd
+git add textures/labelTexture.tx textures/labelTextureSquare.psd textures/publisherTexture.tx textures/publisherTextureSquare.psd textures/myenv.tx
 
 

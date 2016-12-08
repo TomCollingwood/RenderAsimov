@@ -5,7 +5,7 @@ shader tex(
         output color Cout=1,
         output float metal=0,
         output float rough=0,
-        output float spec=0.3)
+        output float spec=0.1)
 {
 
     // IF-LESS !
@@ -20,7 +20,7 @@ shader tex(
     point PP=transform("object",P); 
     color bookCol=color(0.608,0.078,0.102);
 
-    bookCol=color(170./255.,10./255.,25./255.);
+    bookCol=color(230./255.,10./255.,25./255.);
     metal=0;
     rough=0.6;
 
@@ -39,12 +39,12 @@ shader tex(
     PPnoise[2]/=(negSpineLOGIC+1);
 
     float noisecol = noise("perlin",PPnoise);
-    bookCol=bookCol-color(noisecol,noisecol,noisecol)/15;
+    bookCol=bookCol-color(noisecol,noisecol,noisecol)/30;
 
     //-----------------------
     //---BLACK LABEL LOGIC---
     //-----------------------
-    float labelAND1 = smoothstep(-0.051,-0.05,PP[0]);
+    float labelAND1 = smoothstep(-0.055,-0.054,PP[0]);
     float labelAND2 = smoothstep(0.45,0.46,PP[2]);
     float labelAND3 = smoothstep(1.25,1.26,PP[2]);
     float labelLogic = (1-labelAND1)*labelAND2*(1-labelAND3);

@@ -7,17 +7,23 @@ SCENE=book
 length=2
 thickness=0.5
 spinecurve=0.03
-lipdepth=0.02
+lipdepth=0.05
 height=3
 ridgedep1=0.05
 ridgedep2=0.02
-rotatex=0.0
-rotatey=0
-rotatez=0
+
+rotatex=60
+rotatey=85
+rotatez=-60
+
+# For SECOND RENDER
+# rotatex=60
+# rotatey=85
+# rotatez=-60
 spinedepth=0.1
 
 all: RIB/book.rib RISpec/book.gen RIB/pages.rib RISpec/pages.gen RIB/position.rib RISpec/position.gen shaders/randomDisk.oso shaders/randomDiskpaper.oso shaders/tex.oso
-	render -d it RIB/main.rib
+	render RIB/main.rib
 
 RIB/book.rib : RISpec/book.gen
 	LD_LIBRARY_PATH=${RMANTREE}/lib ./RISpec/book.gen $(length) $(thickness) $(spinecurve) $(lipdepth) $(height) $(ridgedep1) $(ridgedep2) $(spinedepth) >RIB/book.rib
