@@ -1,5 +1,6 @@
 # RenderAsimov
 Renderman RIB assignment for Rendering, SDAGE 2nd year
+https://github.com/TomCollingwood/RenderAsimov
 
 I used Ian Stephenson's doDisplace.sl "old-school" shader for my randomDisk.osl shader. The randomDisk.osl shader itself is based on Ian Stephenson's also. The source is mentioned in the pdf.
 
