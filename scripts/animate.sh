@@ -10,6 +10,7 @@ do
     touch RISpec/position.c
     make rotatex=${rotatex} rotatey=${rotatey} rotatez=${rotatez} -f Makefileposition
     prman -d it RIB/main.rib
+    # render RIB/main.rib
     if [ "$step" -lt 10 ]
     then
     mv pointlight.tiff book0${step}.tiff

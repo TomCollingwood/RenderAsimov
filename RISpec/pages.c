@@ -181,13 +181,9 @@ RtPoint midflat[4]=
 		
 		RiPatch("bicubic","P",curvepage,RI_NULL); 
 		RiBasis(RiBezierBasis, RI_BEZIERSTEP, RiBezierBasis, RI_BEZIERSTEP);
-		//RiPatch("bilinear","P",topflat,RI_NULL);
 
 		RiPatch("bicubic","P",midpages,RI_NULL);
 
-		//RiPatch("bilinear","P",botflat,RI_NULL);
-		//RiPatch("bilinear","P",botflat,RI_NULL);
-		//RiPatch("bilinear","P",midflat,RI_NULL);
 
 RiEnd();
 return 0;

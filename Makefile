@@ -12,9 +12,9 @@ height=3
 ridgedep1=0.05
 ridgedep2=0.02
 
-rotatex=60
-rotatey=85
-rotatez=-60
+rotatex=0
+rotatey=0
+rotatez=25
 
 # For SECOND RENDER
 # rotatex=60

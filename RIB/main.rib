@@ -1,13 +1,14 @@
 #pointlight.rib
-Display "final3.tiff" "file" "rgb"
+Display "pages.tiff" "framebuffer" "rgb"
 Format 1280 720 1.0
 Exposure 1.2 2.2
 Quantize "rgba" 255 0 255 0
 
-DepthOfField 22 1.2 3.5
-#DepthOfField 22 2 6.6
+DepthOfField 22 1.2 6.6
 
-PixelVariance 0.000001
+#DepthOfField 22 5 3.4
+
+PixelVariance 0.0001
 #PixelVariance 0.01
 
 #°º¤ø,¸¸,ø¤º°`°º¤ø,¸INTEGRATORS,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸
@@ -19,14 +20,15 @@ Integrator "PxrVCM" "integrator"
  
 Projection "perspective" "fov" [30]
 
-Translate 0 0 -3 	#	FOR COVER
+#Translate 0 0 -3 #for render2
  
 WorldBegin
 	#°º¤ø,¸¸,ø¤º°`°º¤ø,¸LIGHTING,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸
 	#FOR SECOND RENDER
 	AttributeBegin
   	  	AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [7.5]
-  	  	Translate 6.5 0.1 -1.6
+  	  	//Translate 6.5 0.1 -1.6
+				Translate 2 -2 2
   	  	Sphere 0.1 -0.1 0.1 360 
   	AttributeEnd
 
@@ -86,18 +88,18 @@ WorldBegin
 		Pattern "PxrTexture" "table" "string filename" "textures/wood.tx" 
 		Bxdf "PxrDisney" "tabletop" "reference color baseColor" ["table:resultRGB"] "float specular" [ 0.05 ]
 		# FOR SECOND RENDER
-		Patch "bilinear" "P" [ 
-			-10 0.002	-10
-			-10 0.002 	10
-			10 0.002 -10
-			10 0.002	10
-	 ] 
-	 # FOR FIRST RENDER
-	#  Patch "bilinear" "P" [ 
-	# 		-10 	-10	-0.5
-	# 		-10  	10	-0.5
-	# 		10  -10	-0.5
-	# 		10 	10	-0.5
+	# 	Patch "bilinear" "P" [ 
+	# 		-10 0.002	-10
+	# 		-10 0.002 	10
+	# 		10 0.002 -10
+	# 		10 0.002	10
 	#  ] 
+	 # FOR FIRST RENDER
+	 Patch "bilinear" "P" [ 
+			-10 	-10	3
+			-10  	10	3
+			10  -10	3
+			10 	10	3
+	 ] 
 
 WorldEnd
