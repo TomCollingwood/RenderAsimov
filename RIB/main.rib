@@ -6,7 +6,8 @@ Quantize "rgba" 255 0 255 0
 
 DepthOfField 22 1.2 6.6
 
-#DepthOfField 22 5 3.4
+# SECOND RENDER
+# DepthOfField 22 5 3.4
 
 PixelVariance 0.0001
 #PixelVariance 0.01
@@ -20,17 +21,25 @@ Integrator "PxrVCM" "integrator"
  
 Projection "perspective" "fov" [30]
 
-#Translate 0 0 -3 #for render2
+#SECOND RENDER
+# Translate 0 0 -3 
  
 WorldBegin
 	#°º¤ø,¸¸,ø¤º°`°º¤ø,¸LIGHTING,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸
+
 	#FOR SECOND RENDER
-	AttributeBegin
-  	  	AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [7.5]
-  	  	//Translate 6.5 0.1 -1.6
-				Translate 2 -2 2
-  	  	Sphere 0.1 -0.1 0.1 360 
-  	AttributeEnd
+	# AttributeBegin
+  # 	  	AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [5.5]
+	# 			Translate 2 -2 2
+  # 	  	Sphere 0.1 -0.1 0.1 360 
+  # 	AttributeEnd
+
+	#FOR FIRST RENDER
+		AttributeBegin
+   	  	AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [7.5]
+   	  	Translate -2 2 -2
+   	  	Sphere 0.1 -0.1 0.1 360 
+   	AttributeEnd
 
 	AttributeBegin
 		AreaLightSource "PxrStdAreaLight" "theLight" "float exposure" [1]
